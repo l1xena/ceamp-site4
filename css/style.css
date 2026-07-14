@@ -803,3 +803,10 @@ p.lead { font-size: 19px; color: var(--ink-soft); }
 @media (max-width: 720px) {
   .nav a { padding: 10px 0; }
 }
+/* Repositório no celular: rótulos Autor/Ano na frente do valor */
+@media (max-width: 720px) {
+  .works-table td:nth-child(2)::before { content: "Autor(a): "; color: var(--ink-muted); font-weight: 700; }
+  .works-table td:nth-child(3)::before { content: "Ano: "; color: var(--ink-muted); font-weight: 700; }
+  .works-table td:nth-child(2),
+  .works-table td:nth-child(3) { font-size: 14px; }
+}
