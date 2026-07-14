@@ -1,0 +1,82 @@
+/* =========================================================
+   CEAMP — layout da HOME (tela fixa, uma tela só)
+   Só age na home (body.home). As cores/fonte do menu e do
+   rodapé vêm do theme.css. Carregue na ordem:
+   style.css -> theme.css -> home.css
+   ========================================================= */
+
+body.home{
+  --blush:#FDD5C6;     /* rosinha do fundo (igual ao da arte) */
+  --img-scale:1.05;    /* ampliada leve da arte só pra fechar a frestinha */
+
+  height:100dvh;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  background:var(--blush);
+}
+
+/* Menu: parte da tela fixa (não flutua) */
+body.home .site-header{
+  position:relative;
+  flex:0 0 auto;
+  height:58px;
+  padding:0 var(--pad-x);
+}
+body.home .nav{ gap:32px; }
+body.home .nav a{ font-size:13px; letter-spacing:0.14em; text-transform:uppercase; padding:6px 0; }
+
+/* Imagem no meio: inteira (sem corte) + leve ampliada */
+body.home .hero{
+  position:relative;
+  flex:1 1 auto;
+  min-height:0;
+  height:auto;
+  background:var(--blush);
+  overflow:hidden;
+  display:block;
+  color:inherit;
+  text-align:left;
+}
+body.home .hero picture{ display:block; width:100%; height:100%; }
+body.home .hero img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center;
+  transform:scale(var(--img-scale));
+}
+
+/* Rodapé: parte da tela fixa */
+body.home .site-footer{
+  flex:0 0 auto;
+  margin-top:0;
+  padding:16px var(--pad-x);
+}
+body.home .footer-inner{ max-width:none; font-size:13px; letter-spacing:0.06em; }
+
+/* Celular */
+@media (max-width:720px){
+  body.home .nav-toggle{
+    display:block;
+    position:absolute;
+    right:var(--pad-x);
+    top:50%;
+    transform:translateY(-50%);
+  }
+  body.home .nav{
+    position:fixed;
+    top:0; right:0; bottom:0;
+    width:78%; max-width:320px;
+    flex-direction:column;
+    align-items:flex-start;
+    padding:90px 32px 32px;
+    transform:translateX(100%);
+    transition:transform 0.35s ease;
+    gap:22px;
+    box-shadow:-20px 0 40px -20px rgba(0,0,0,0.35);
+    z-index:99;
+  }
+  body.home .nav.open{ transform:translateX(0); }
+  body.home .nav a{ font-size:15px; }
+}

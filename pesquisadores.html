@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Pesquisadores do Centro de Estudos Americanos da Unicamp (CEAMP)." />
+  <title>Pesquisadores · CEAMP</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/theme.css" />
+</head>
+<body class="page-pesquisadores">
+  <header class="site-header">
+    <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="historia.html">Nossa história</a>
+      <a href="pesquisadores.html" class="active">Pesquisadores</a>
+      <a href="repositorio.html">Repositório</a>
+      <a href="contato.html">Contato</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="page-hero-inner">
+        <p class="eyebrow">02 · Pesquisadores</p>
+        <h1>Quem faz o CEAMP.</h1>
+        <p class="subtitle">
+          Coordenadores, pesquisadores em atividade e pesquisadores associados
+          que constroem a produção do grupo.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <!-- COORDENADORES -->
+      <div class="people-block">
+        <div class="people-header">
+          <h2>Coordenação</h2>
+          <span class="count">03 pesquisadores</span>
+        </div>
+
+        <div class="people-grid coord">
+          <article class="person">
+            <div class="person-photo">
+              <img src="img/pesquisadores/ivia-minelli.jpg" alt="Ivia Minelli" onerror="this.style.display='none'" />
+            </div>
+            <p class="person-role">Coordenadora</p>
+            <h3 class="person-name">Ivia Minelli</h3>
+            <a class="person-lattes" href="http://lattes.cnpq.br/2504619945377334" target="_blank" rel="noopener">Currículo Lattes ↗</a>
+          </article>
+
+          <article class="person">
+            <div class="person-photo">
+              <img src="img/pesquisadores/jose-alves-de-freitas-neto.jpg" alt="José Alves de Freitas Neto" onerror="this.style.display='none'" />
+            </div>
+            <p class="person-role">Coordenador</p>
+            <h3 class="person-name">José Alves de Freitas Neto</h3>
+            <a class="person-lattes" href="http://lattes.cnpq.br/6583846020363516" target="_blank" rel="noopener">Currículo Lattes ↗</a>
+          </article>
+
+          <article class="person">
+            <div class="person-photo">
+              <img src="img/pesquisadores/luiz-estevam-de-oliveira-fernandes.jpg" alt="Luiz Estevam de Oliveira Fernandes" onerror="this.style.display='none'" />
+            </div>
+            <p class="person-role">Coordenador</p>
+            <h3 class="person-name">Luiz Estevam de Oliveira Fernandes</h3>
+            <a class="person-lattes" href="http://lattes.cnpq.br/2093509678163801" target="_blank" rel="noopener">Currículo Lattes ↗</a>
+          </article>
+        </div>
+      </div>
+
+      <!-- PESQUISADORES -->
+      <div class="people-block">
+        <div class="people-header">
+          <h2>Pesquisadores</h2>
+          <span class="count">17 pesquisadores</span>
+        </div>
+
+        <div class="people-grid" id="pesquisadores-grid">
+          <!-- 20 pesquisadores (placeholders) -->
+        </div>
+      </div>
+
+      <!-- ASSOCIADOS -->
+      <div class="people-block">
+        <div class="people-header">
+          <h2>Pesquisadores associados</h2>
+          <span class="count">05 pesquisadores</span>
+        </div>
+
+        <div class="people-grid" id="associados-grid">
+          <!-- 20 associados (placeholders) -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="brand-small">Centro de Estudos Americanos da Unicamp</span>
+      <span>Todos os direitos reservados · <span id="year"></span></span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Placeholders para 20 pesquisadores e 20 associados.
+    // Substitua o array `pesquisadores` e `associados` pelos nomes reais,
+    // e coloque as fotos em img/pesquisadores/<slug>.jpg
+    const pesquisadores = [
+      { nome: 'Ana Carolina Balbino', slug: 'ana-carolina-balbino', lattes: 'http://lattes.cnpq.br/0913493261449773' },
+      { nome: 'Catherine Hergert', slug: 'catherine-hergert', lattes: 'http://lattes.cnpq.br/3355448396720740' },
+      { nome: 'Clara Garcia', slug: 'clara-garcia', lattes: 'http://lattes.cnpq.br/6935139006330862' },
+      { nome: 'Daniel Vieira', slug: 'daniel-vieira', lattes: 'http://lattes.cnpq.br/3236078722858678' },
+      { nome: 'Dara Ramos', slug: 'dara-ramos', lattes: 'http://lattes.cnpq.br/0381321331451630' },
+      { nome: 'Fernanda Brenelli', slug: 'fernanda-brenelli', lattes: 'http://lattes.cnpq.br/9781424113655055' },
+      { nome: 'Gustavo Padilha', slug: 'gustavo-padilha', lattes: 'http://lattes.cnpq.br/2903312465843460' },
+      { nome: 'Laura Galassi', slug: 'laura-galassi', lattes: 'http://lattes.cnpq.br/5278288601454949' },
+      { nome: 'Laura Marostegan', slug: 'laura-marostegan', lattes: 'http://lattes.cnpq.br/6220346816034254' },
+      { nome: 'Lívia Mendes', slug: 'livia-mendes', lattes: 'http://lattes.cnpq.br/1296475213238854' },
+      { nome: 'Lucas Bueno', slug: 'lucas-bueno', lattes: 'http://lattes.cnpq.br/4746828147155673' },
+      { nome: 'Luiza Trevenzoli', slug: 'luiza-trevenzoli', lattes: 'http://lattes.cnpq.br/2176720285998705' },
+      { nome: 'Maria Clara Figueiredo', slug: 'maria-clara-figueiredo', lattes: 'http://lattes.cnpq.br/9442622981315444' },
+      { nome: 'Mariana Adami', slug: 'mariana-adami', lattes: 'http://lattes.cnpq.br/3383243816561582' },
+      { nome: 'Mariza Cardoso', slug: 'mariza-cardoso', lattes: 'http://lattes.cnpq.br/7387499815589247' },
+      { nome: 'Matheus Martins', slug: 'matheus-martins', lattes: 'http://lattes.cnpq.br/7281542833274446' },
+      { nome: 'Raquel Lanzoni', slug: 'raquel-lanzoni', lattes: 'http://lattes.cnpq.br/6360193269646810' },
+    ];
+
+    const associados = [
+      { nome: 'Breno Juz', slug: 'breno-juz', lattes: 'http://lattes.cnpq.br/4302047061574128' },
+      { nome: 'Gabriel Sordi', slug: 'gabriel-sordi', lattes: 'http://lattes.cnpq.br/8840923919185834' },
+      { nome: 'Gabriela Theodoro', slug: 'gabriela-theodoro', lattes: 'http://lattes.cnpq.br/8379391706150049' },
+      { nome: 'José Ferreira', slug: 'jose-ferreira', lattes: 'http://lattes.cnpq.br/7678938529408028' },
+      { nome: 'Rafael Pavani', slug: 'rafael-pavani', lattes: 'http://lattes.cnpq.br/2428550824791654' },
+    ];
+
+    const renderPerson = (p) => `
+      <article class="person">
+        <div class="person-photo">
+          <img src="img/pesquisadores/${p.slug}.jpg" alt="${p.nome}" onerror="this.style.display='none'" />
+        </div>
+        <h3 class="person-name">${p.nome}</h3>
+        <a class="person-lattes" href="${p.lattes}" target="_blank" rel="noopener">Currículo Lattes ↗</a>
+      </article>
+    `;
+
+    document.getElementById('pesquisadores-grid').innerHTML = pesquisadores.map(renderPerson).join('');
+    document.getElementById('associados-grid').innerHTML = associados.map(renderPerson).join('');
+  </script>
+</body>
+</html>

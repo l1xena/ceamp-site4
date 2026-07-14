@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Entre em contato com o Centro de Estudos Americanos da Unicamp (CEAMP)." />
+  <title>Contato · CEAMP</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/theme.css" />
+</head>
+<body class="page-contato">
+  <header class="site-header">
+    <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="historia.html">Nossa história</a>
+      <a href="pesquisadores.html">Pesquisadores</a>
+      <a href="repositorio.html">Repositório</a>
+      <a href="contato.html" class="active">Contato</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="page-hero-inner">
+        <p class="eyebrow">04 · Contato</p>
+        <h1>Fale com o CEAMP.</h1>
+        <p class="subtitle">
+          Para colaborações, submissão de trabalhos, dúvidas sobre o grupo ou
+          uso do repositório — mande uma mensagem.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="info-block">
+            <h3>Onde estamos</h3>
+            <p>
+              Instituto de Filosofia e Ciências Humanas (IFCH)<br />
+              Universidade Estadual de Campinas — Unicamp<br />
+              Rua Cora Coralina, 100 · Cidade Universitária<br />
+              Campinas · SP · Brasil
+            </p>
+          </div>
+          <div class="info-block">
+            <h3>Email</h3>
+            <p><a href="mailto:ceamp@unicamp.br">ceamp@unicamp.br</a></p>
+          </div>
+          <div class="info-block">
+            <h3>Redes</h3>
+            <p>
+              <a href="#" target="_blank" rel="noopener">Instagram ↗</a><br />
+              <a href="#" target="_blank" rel="noopener">Academia.edu ↗</a>
+            </p>
+          </div>
+        </div>
+
+        <form class="contact-form" id="contact-form" novalidate>
+          <div class="field">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" required autocomplete="name" />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required autocomplete="email" />
+          </div>
+          <div class="field">
+            <label for="assunto">Assunto</label>
+            <input type="text" id="assunto" name="assunto" required />
+          </div>
+          <div class="field">
+            <label for="mensagem">Mensagem</label>
+            <textarea id="mensagem" name="mensagem" required></textarea>
+          </div>
+          <button type="submit" class="btn">Enviar mensagem →</button>
+          <div class="form-status" id="form-status" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="brand-small">Centro de Estudos Americanos da Unicamp</span>
+      <span>Todos os direitos reservados · <span id="year"></span></span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // Sem backend: o form monta um mailto: com os dados preenchidos.
+    // Para receber via HTTP direto, troque por um serviço como Formspree,
+    // Getform ou Web3Forms (basta colocar a URL no `action` do form).
+    const EMAIL_DESTINO = 'ceamp@unicamp.br';
+
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const data = new FormData(form);
+      const nome = data.get('nome')?.toString().trim();
+      const email = data.get('email')?.toString().trim();
+      const assunto = data.get('assunto')?.toString().trim();
+      const mensagem = data.get('mensagem')?.toString().trim();
+
+      if (!nome || !email || !assunto || !mensagem) {
+        status.textContent = 'Preencha todos os campos.';
+        status.className = 'form-status error';
+        return;
+      }
+
+      const body =
+        `Nome: ${nome}\n` +
+        `Email: ${email}\n\n` +
+        `${mensagem}`;
+
+      const href =
+        `mailto:${EMAIL_DESTINO}` +
+        `?subject=${encodeURIComponent('[CEAMP] ' + assunto)}` +
+        `&body=${encodeURIComponent(body)}`;
+
+      window.location.href = href;
+      status.textContent = 'Abrindo seu cliente de email…';
+      status.className = 'form-status success';
+    });
+  </script>
+</body>
+</html>

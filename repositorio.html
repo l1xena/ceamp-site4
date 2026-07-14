@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Repositório de teses, dissertações e compilações documentais produzidas pelo CEAMP." />
+  <title>Repositório · CEAMP</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/theme.css" />
+</head>
+<body class="page-repositorio">
+  <header class="site-header">
+    <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="historia.html">Nossa história</a>
+      <a href="pesquisadores.html">Pesquisadores</a>
+      <a href="repositorio.html" class="active">Repositório</a>
+      <a href="contato.html">Contato</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="page-hero-inner">
+        <p class="eyebrow">03 · Repositório</p>
+        <h1>Nosso acervo de pesquisa em História da América.</h1>
+        <p class="subtitle">
+          Toda a produção reunida pelo CEAMP em um só lugar. Busque por título,
+          autor, ano — ou refine por país, século e período histórico.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="repo-toolbar">
+        <input
+          type="search"
+          class="search-input"
+          id="search"
+          placeholder="Buscar por título, autor, ano..."
+          autocomplete="off"
+        />
+
+        <div class="filters">
+          <div class="filter-group">
+            <label for="filter-periodo">Período histórico</label>
+            <select id="filter-periodo"></select>
+          </div>
+          <div class="filter-group">
+            <label for="filter-seculo">Século</label>
+            <select id="filter-seculo"></select>
+          </div>
+          <div class="filter-group">
+            <label for="filter-pais">País</label>
+            <select id="filter-pais"></select>
+          </div>
+          <div class="filter-group">
+            <label for="filter-tipo">Tipo</label>
+            <select id="filter-tipo"></select>
+          </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="repo-meta">
+        <span id="repo-meta-count">Carregando…</span>
+        <button class="clear-filters" id="clear-filters">Limpar filtros</button>
+      </div>
+
+      <table class="works-table">
+        <thead>
+          <tr>
+            <th style="width: 46%;">Título</th>
+            <th style="width: 22%;">Autor(a)</th>
+            <th style="width: 10%;">Ano</th>
+            <th style="width: 22%;"></th>
+          </tr>
+        </thead>
+        <tbody id="works-tbody"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="brand-small">Centro de Estudos Americanos da Unicamp</span>
+      <span>Todos os direitos reservados · <span id="year"></span></span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/repositorio.js"></script>
+</body>
+</html>

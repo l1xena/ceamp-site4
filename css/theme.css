@@ -1,0 +1,45 @@
+/* =========================================================
+   CEAMP — tema do menu e rodapé (todas as páginas)
+   Carregue este arquivo DEPOIS do style.css em todas as páginas.
+   Deixa o menu e o rodapé laranja. Fonte: Helvetica (padrão do site).
+   ========================================================= */
+
+:root{
+  --header:#d06418;      /* laranja do menu e do rodapé */
+  --on-header:#111111;   /* texto sobre o laranja */
+}
+
+/* ---- Menu laranja, alinhado à direita ---- */
+.site-header,
+.site-header.solid{
+  background:var(--header);
+  color:var(--on-header);
+  justify-content:flex-end;
+  box-shadow:none;
+  backdrop-filter:none;
+  -webkit-backdrop-filter:none;
+}
+.nav a::after{ background:#fff; }
+.nav a:hover,
+.nav a.active,
+.site-header.solid .nav a:hover,
+.site-header.solid .nav a.active{ color:#fff; }
+
+/* ---- Rodapé laranja ---- */
+.site-footer{
+  background:var(--header);
+  border-top:none;
+  color:var(--on-header);
+}
+.footer-inner{ color:var(--on-header); }
+.footer-inner .muted{ opacity:0.85; }
+.footer-inner .brand-small{ color:var(--on-header); }
+
+/* ---- Celular: painel lateral do menu também laranja ---- */
+@media (max-width:720px){
+  .nav{ background:var(--header); }
+  .nav a,
+  .site-header.solid .nav a{ color:var(--on-header); }
+  .nav a:hover,
+  .nav a.active{ color:#fff; }
+}
