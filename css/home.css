@@ -20,7 +20,7 @@ body.home{
 body.home .site-header{
   position:relative;
   flex:0 0 auto;
-  height:58px;
+  height:76px;
   padding:0 var(--pad-x);
 }
 body.home .nav{ gap:32px; }
@@ -51,7 +51,7 @@ body.home .hero img{
 body.home .site-footer{
   flex:0 0 auto;
   margin-top:0;
-  padding:16px var(--pad-x);
+  padding:24px var(--pad-x);
 }
 body.home .footer-inner{ max-width:none; font-size:13px; letter-spacing:0.06em; }
 
