@@ -34,3 +34,12 @@
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 })();
+// Fecha o menu do celular ao tocar fora dele
+document.addEventListener('click', function (e) {
+  var nav = document.querySelector('.nav');
+  var toggle = document.querySelector('.nav-toggle');
+  if (!nav || !nav.classList.contains('open')) return;
+  if (nav.contains(e.target) || (toggle && toggle.contains(e.target))) return;
+  nav.classList.remove('open');
+  if (toggle) toggle.setAttribute('aria-expanded', 'false');
+});
