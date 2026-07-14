@@ -12,8 +12,8 @@
   --line-strong: #cfcfcf;
   --bg: #ffffff;
   --bg-soft: #f7f7f5;
-  --accent: #d94a1f;       /* laranja-terra */
-  --accent-hover: #b83a15; /* vermelho-tijolo */
+  --accent: #d06418;       /* laranja-terra */
+  --accent-hover: #a85013; /* vermelho-tijolo */
   --max: 1240px;
   --pad-x: clamp(20px, 5vw, 64px);
   --transition: 0.25s ease;
@@ -787,4 +787,19 @@ p.lead { font-size: 19px; color: var(--ink-soft); }
   .works-table tr { padding: 20px 0; }
   .works-table td { padding: 6px 0; }
   .works-table td.work-title { font-size: 16px; }
+}
+/* Associados: centraliza a última linha (some o 4+1) */
+@media (min-width: 901px) {
+  #associados-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px 32px;
+  }
+  #associados-grid .person { width: calc((100% - 3 * 32px) / 4); }
+}
+
+/* Celular: áreas de toque maiores no menu */
+@media (max-width: 720px) {
+  .nav a { padding: 10px 0; }
 }
