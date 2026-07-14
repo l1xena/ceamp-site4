@@ -54,3 +54,25 @@
   padding-top: 24px;
   padding-bottom: 24px;
 }
+/* Só no celular: rodapé centralizado + rótulo "Menu" no botão */
+@media (max-width: 720px) {
+  .footer-inner {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .nav-toggle { position: relative; }
+  .nav-toggle::after {
+    content: "Menu";
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-right: 10px;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--on-header);
+    white-space: nowrap;
+  }
+}
