@@ -43,3 +43,14 @@
   .nav a:hover,
   .nav a.active{ color:#fff; }
 }
+/* Menu e rodapé com a mesma altura em todas as páginas */
+.site-header,
+.site-header.solid {
+  height: 76px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.site-footer {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
