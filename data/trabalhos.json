@@ -1,22 +1,622 @@
 [
   {
-    "titulo": "Escravidão e abolição no Brasil imperial",
-    "autor": "Maria da Silva",
-    "ano": 1998,
-    "pais": "Brasil",
-    "seculo": "XIX",
-    "periodo": "América independente",
+    "titulo": "No exílio, por justiça: Os exilados e o processo penal contra os militares argentinos na Espanha (1996-1998)",
+    "autor": "Ana Carolina Balbino",
+    "ano": 2022,
+    "pais": "Argentina",
+    "seculo": "XX",
+    "periodo": "América contemporânea",
     "tipo": "Tese",
     "arquivo": ""
   },
   {
-    "titulo": "A conquista espanhola e os povos originários do México",
-    "autor": "João Pereira",
-    "ano": 2005,
+    "titulo": "O exílio em manchete: O retrato dos exilados na imprensa argentina durante a redemocratização (1982-1984)",
+    "autor": "Ana Carolina Balbino",
+    "ano": 2015,
+    "pais": "Argentina",
+    "seculo": "XX",
+    "periodo": "América contemporânea",
+    "tipo": "Dissertação",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=495741"
+  },
+  {
+    "titulo": "Escrita e resistência: Análise das revistas de oposição ao governo da Junta Militar durante o Plebiscito Chileno de 1988",
+    "autor": "Maria Clara da Silveira",
+    "ano": 2023,
+    "pais": "Chile",
+    "seculo": "XX",
+    "periodo": "América contemporânea",
+    "tipo": "Dissertação",
+    "arquivo": "https://acervus.unicamp.br/Busca/Download?codigoArquivo=589840&tipoMidia=0"
+  },
+  {
+    "titulo": "Elena Garro: uma intelectual e seus combates. Periodismo, literatura e política no México contemporâneo (1952-1968)",
+    "autor": "Mariana Adami",
+    "ano": 2021,
+    "pais": "México",
+    "seculo": "XX",
+    "periodo": "América contemporânea",
+    "tipo": "Dissertação",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=592452&tipoMidia=0"
+  },
+  {
+    "titulo": "Festas para Bolívar?: Entre projetos e sentidos, nas comemorações dedicadas ao Libertador em Caracas (1827, 1842, 1883)",
+    "autor": "Matheus Martins",
+    "ano": 2018,
+    "pais": "Venezuela",
+    "seculo": "XIX",
+    "periodo": "América contemporânea",
+    "tipo": "Dissertação",
+    "arquivo": "https://acervus.unicamp.br/Busca/Download?codigoArquivo=497095&tipoMidia=0"
+  },
+  {
+    "titulo": "Revolução, Ordem e Progresso: ruptura e permanência na cultura política do México revolucionário. (1867 - 1940)",
+    "autor": "Rafael Pavani",
+    "ano": 2020,
+    "pais": "México",
+    "seculo": "XX",
+    "periodo": "América contemporânea",
+    "tipo": "Tese",
+    "arquivo": "https://acervus.unicamp.br/Busca/Download?codigoArquivo=496266&tipoMidia=0"
+  },
+  {
+    "titulo": "Discursos sobre a Revolução Mexicana e a legitimação do poder presidencial nos comunicados oficiais de Lázaro Cárdenas (1934 - 1940)",
+    "autor": "Rafael Pavani",
+    "ano": 2009,
+    "pais": "México",
+    "seculo": "XX",
+    "periodo": "América contemporânea",
+    "tipo": "Dissertação",
+    "arquivo": "https://acervus.unicamp.br/Busca/Download?codigoArquivo=497812&tipoMidia=0"
+  },
+  {
+    "titulo": "As mulheres na Conquista de México-Tenochtitlán: sexo, guerra e devoção",
+    "autor": "Gabriela Theodoro",
+    "ano": 2025,
     "pais": "México",
     "seculo": "XVI",
     "periodo": "América colonial",
     "tipo": "Dissertação",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=597140&tipoMidia=0"
+  },
+  {
+    "titulo": "Representações audiovisuais da Argentina em crise (1999-2004)",
+    "autor": "Breno Juz",
+    "ano": 2010,
+    "pais": "Argentina",
+    "seculo": "XX",
+    "periodo": "América contemporânea",
+    "tipo": "Dissertação",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=495578"
+  },
+  {
+    "titulo": "A construção do México pós-nacional: intelectuais, NAFTA e a questão da identidade nacional (1988-2000)",
+    "autor": "José Ferreira",
+    "ano": 2022,
+    "pais": "México",
+    "seculo": "XX",
+    "periodo": "América contemporânea",
+    "tipo": "Tese",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=551565&tipoMidia=0"
+  },
+  {
+    "titulo": "Retórica Americana: temas e idéias político-culturais do modelo revolucionário cubano em Casa de las Américas",
+    "autor": "José Ferreira",
+    "ano": 2014,
+    "pais": "Cuba",
+    "seculo": "XX",
+    "periodo": "América contemporânea",
+    "tipo": "Dissertação",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=495088&tipoMidia=0"
+  },
+  {
+    "titulo": "Entre sistema hegemônico e \"dictadura perfecta\": ideias de democracia no México da transição (1968-1988)",
+    "autor": "Júlio Matzenbacher Zampietro",
+    "ano": 2025,
+    "pais": "México",
+    "seculo": "XX",
+    "periodo": "América contemporânea",
+    "tipo": "Dissertação",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=583451&tipoMidia=0"
+  },
+  {
+    "titulo": "¿Alpargatas sí, libros no?: Produção cultural e legitimidade política durante o governo de Perón (1946-1955)",
+    "autor": "Paulo Renato da Silva",
+    "ano": 2009,
+    "pais": "Argentina",
+    "seculo": "XX",
+    "periodo": "América contemporânea",
+    "tipo": "Tese",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=497880&tipoMidia=0"
+  },
+  {
+    "titulo": "História e Cinema: o tempo como representação em Lucrecia Martel e Beto Brant",
+    "autor": "Monica Brincalepe Campo",
+    "ano": 2010,
+    "pais": "Argentina",
+    "seculo": "XXI",
+    "periodo": "América contemporânea",
+    "tipo": "Tese",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=495641&tipoMidia=0"
+  },
+  {
+    "titulo": "MÁRTIRES DE CRISTO REY: REVOLUÇÃO E RELIGIÃO NO MÉXICO (1927-1960)",
+    "autor": "Caio Pedrosa da Silva",
+    "ano": 2015,
+    "pais": "México",
+    "seculo": "XX",
+    "periodo": "América contemporânea",
+    "tipo": "Tese",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=495746&tipoMidia=0"
+  },
+  {
+    "titulo": "Hortensia, da aventura ao mito: cultura humorística e discurso identitário na Córdoba dos anos 1970-1980",
+    "autor": "Priscila Pereira",
+    "ano": 2017,
+    "pais": "Argentina",
+    "seculo": "XX",
+    "periodo": "América contemporânea",
+    "tipo": "Tese",
+    "arquivo": "https://acervus.unicamp.br/Busca/Download?codigoArquivo=496924&tipoMidia=0"
+  },
+  {
+    "titulo": "História, memória e literatura: a construção do passado hispano-americano nos romances de Gabriel García Márquez",
+    "autor": "Felipe Vieira",
+    "ano": 2018,
+    "pais": "Colômbia",
+    "seculo": "XX",
+    "periodo": "América contemporânea",
+    "tipo": "Tese",
+    "arquivo": "https://acervus.unicamp.br/Busca/Download?codigoArquivo=497303&tipoMidia=0"
+  },
+  {
+    "titulo": "História em pugna: a Revista del Río de la Plata no debate sobre a construção do campo histórico e literário argentino (1871-1877)",
+    "autor": "Bruno Terlizzi",
+    "ano": 2019,
+    "pais": "Argentina",
+    "seculo": "XX",
+    "periodo": "América contemporânea",
+    "tipo": "Tese",
+    "arquivo": "https://acervus.unicamp.br/Busca/Download?codigoArquivo=498776&tipoMidia=0"
+  },
+  {
+    "titulo": "Bolívar entre a crus e a espada: o Correo del Orinoco, Las Casas, Cortés e as Independências (1818-1822).",
+    "autor": "Marcus Vinicius de Morais",
+    "ano": 2020,
+    "pais": "Venezuela",
+    "seculo": "XX",
+    "periodo": "América contemporânea",
+    "tipo": "Tese",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=498749&tipoMidia=0"
+  },
+  {
+    "titulo": "História da iconografia numismática uruguaia: os paradigmas político-culturais uruguaios em anversos e reversos (1840-2017)",
+    "autor": "Gabriel Sordi",
+    "ano": 2020,
+    "pais": "Uruguai",
+    "seculo": "XIX",
+    "periodo": "América independente",
+    "tipo": "Tese",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=498712&tipoMidia=0"
+  },
+  {
+    "titulo": "Porque sabemos a verdade, temos memória, exigimos justiça: A inserção dos sobreviventes dos centros clandestinos de detenção no movimento argentino pelos direitos humanos (1984-2014)",
+    "autor": "Marcos Tolentino",
+    "ano": 2026,
+    "pais": "Argentina",
+    "seculo": "XX",
+    "periodo": "América contemporânea",
+    "tipo": "Tese",
     "arquivo": ""
+  },
+  {
+    "titulo": "Cognoscer todas y tan infinitas naciones: uma analise sobre as fontes e a composição da Apologetica Historia Sumaria de Bartolome de Las Casas (1522-1559)",
+    "autor": "Vinicius Muhlethaler Beire",
+    "ano": 2008,
+    "pais": "México",
+    "seculo": "XVI",
+    "periodo": "América colonial",
+    "tipo": "Dissertação",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=497071&tipoMidia=0"
+  },
+  {
+    "titulo": "Que se vayan todos! Os piqueteros e a agenda neoliberal argentina (1989-2001)",
+    "autor": "Danilo Destro Pádua",
+    "ano": 2009,
+    "pais": "Argentina",
+    "seculo": "XXI",
+    "periodo": "América contemporânea",
+    "tipo": "Dissertação",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=497905&tipoMidia=0"
+  },
+  {
+    "titulo": "Soldados de Cristo Rey, de la Virgen y de la Patria: representações da Cristera na historiografia",
+    "autor": "Caio Pedrosa da Silva",
+    "ano": 2009,
+    "pais": "México",
+    "seculo": "XX",
+    "periodo": "América contemporânea",
+    "tipo": "Dissertação",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=497978"
+  },
+  {
+    "titulo": "El Protector y su pueblo libre: a representação do caudilho José Artigas no centenário de sua morte (1950)",
+    "autor": "Gabriel Sordi",
+    "ano": 2009,
+    "pais": "Uruguai",
+    "seculo": "XX",
+    "periodo": "América contemporânea",
+    "tipo": "Dissertação",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=497862&tipoMidia=0"
+  },
+  {
+    "titulo": "Entre a épica e a paródia: a (des)mistificação do gaúcho nos quadrinhos de Inodoro Pereyra, el renegau",
+    "autor": "Priscila Pereira",
+    "ano": 2011,
+    "pais": "Argentina",
+    "seculo": "XX",
+    "periodo": "América contemporânea",
+    "tipo": "Dissertação",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=495747&tipoMidia=0"
+  },
+  {
+    "titulo": "O 16 de setembro sob a ótica da DIPBA - Dirección de Inteligencia de la Policía de la Provincia de Buenos Aires (1990-1996)",
+    "autor": "Marcos Tolentino",
+    "ano": 2012,
+    "pais": "Argentina",
+    "seculo": "XX",
+    "periodo": "América contemporânea",
+    "tipo": "Dissertação",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=496831&tipoMidia=0"
+  },
+  {
+    "titulo": "De Macondo a McOndo: os limites do Real Maravilhoso como discurso de representação da América Latina (1953-1996)",
+    "autor": "Felipe Vieira",
+    "ano": 2012,
+    "pais": "Colômbia",
+    "seculo": "XX",
+    "periodo": "América contemporânea",
+    "tipo": "Dissertação",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=496524&tipoMidia=0"
+  },
+  {
+    "titulo": "Cinema Contemporâneo Argentino: um lugar da memória: A produção e reprodução de memórias da geração de filhos de vítimas da Ditadura Militar Argentina (1973-1983)",
+    "autor": "Bruna Borges da Silva",
+    "ano": 2013,
+    "pais": "Argentina",
+    "seculo": "XX",
+    "periodo": "América contemporânea",
+    "tipo": "Dissertação",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=495319&tipoMidia=0"
+  },
+  {
+    "titulo": "Conceitos em disputa: as linguagens políticas nas obras de Sarmiento e o conflito em torno do conceito de americanismo",
+    "autor": "Bruno Terlizzi",
+    "ano": 2013,
+    "pais": "Argentina",
+    "seculo": "XX",
+    "periodo": "América contemporânea",
+    "tipo": "Dissertação",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=497834&tipoMidia=0"
+  },
+  {
+    "titulo": "Escritas de um passado recente argentino: a revista cultural Punto de Vista (1982-1989)",
+    "autor": "Andresa Martins Rodrigues.",
+    "ano": 2014,
+    "pais": "Argentina",
+    "seculo": "XX",
+    "periodo": "América contemporânea",
+    "tipo": "Dissertação",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=495327&tipoMidia=0"
+  },
+  {
+    "titulo": "Pontes de papel: intelectuais e concepções americanistas nos Cuadernos Americanos (1942 - 1959)",
+    "autor": "André Pupin",
+    "ano": 2020,
+    "pais": "México",
+    "seculo": "XX",
+    "periodo": "América contemporânea",
+    "tipo": "Dissertação",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=590876&tipoMidia=0"
+  },
+  {
+    "titulo": "Memín Pinguín, el negro inquietante : discursos e imagens sobre a identidade nacional mexicana em Almas de Niño (1943 - 1948)",
+    "autor": "Renata Dell'Arriva",
+    "ano": 2020,
+    "pais": "México",
+    "seculo": "XX",
+    "periodo": "América contemporânea",
+    "tipo": "Dissertação",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=498751&tipoMidia=0"
+  },
+  {
+    "titulo": "Mulheres montoneras: política revolucionária em feminino.",
+    "autor": "Julia Aleksandra Martucci Kumpera",
+    "ano": 2016,
+    "pais": "Argentina",
+    "seculo": "XX",
+    "periodo": "América contemporânea",
+    "tipo": "Monografia (TCC)",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=511902&tipoMidia=0"
+  },
+  {
+    "titulo": "Yo el supremo, romance, historia... : historiografia e literatura paraguaias sobre o ditador Francia",
+    "autor": "Claudia Regina Ferreira Santos",
+    "ano": 2000,
+    "pais": "México",
+    "seculo": "XVI",
+    "periodo": "América colonial",
+    "tipo": "Dissertação",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=498523&tipoMidia=0"
+  },
+  {
+    "titulo": "Bartolome de las Casas e a simulação dos vencidos: ensaio sobre a conquista hispanica da America",
+    "autor": "Héctor Hernán Bruit Cabrera",
+    "ano": 1993,
+    "pais": "México",
+    "seculo": "XVI",
+    "periodo": "América colonial",
+    "tipo": "Tese",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=498725&tipoMidia=0"
+  },
+  {
+    "titulo": "A construção de uma iconografia da América: Alegorias dos séculos XVI e XVII",
+    "autor": "Flavia Galli Tatsch",
+    "ano": 2011,
+    "pais": "",
+    "seculo": "XVI",
+    "periodo": "América colonial",
+    "tipo": "Tese",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=495950&tipoMidia=0"
+  },
+  {
+    "titulo": "Memorias fragmentadas : novos aportes a historia de confecção e formação do Codice Telleriano Remensis. Estudo codicologico",
+    "autor": "Glaucia Cristiani Montoro",
+    "ano": 2008,
+    "pais": "México",
+    "seculo": "XVI",
+    "periodo": "América colonial",
+    "tipo": "Tese",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=497155&tipoMidia=0"
+  },
+  {
+    "titulo": "A conquista do prata: análise da crônica de Ulrico Schmidt.",
+    "autor": "Luís Guilherme Assis Kalil",
+    "ano": 2008,
+    "pais": "Rio da Prata",
+    "seculo": "XVI",
+    "periodo": "América colonial",
+    "tipo": "Tese",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=497430&tipoMidia=0"
+  },
+  {
+    "titulo": "Dos livros adivinhatorios aos codices coloniais: uma leitura de representações pictograficas mesoamericanas",
+    "autor": "Glaucia Cristiani Montoro",
+    "ano": 2001,
+    "pais": "México",
+    "seculo": "XVI",
+    "periodo": "América colonial",
+    "tipo": "Dissertação",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=495063&tipoMidia=0"
+  },
+  {
+    "titulo": "Historias esquecidas: discursos de unificação dos Andes pre-colombianos",
+    "autor": "David Fernando Nogueira da Silva",
+    "ano": 2003,
+    "pais": "Peru",
+    "seculo": "XVI",
+    "periodo": "América pré-hispânica",
+    "tipo": "Dissertação",
+    "arquivo": "https://acervus.unicamp.br/Busca/Download?codigoArquivo=497552&tipoMidia=0"
+  },
+  {
+    "titulo": "As historias nas paginas de um romance: analise da representação de ditadura na obra El Otoño del Patriarca",
+    "autor": "Laila Brichta",
+    "ano": 2002,
+    "pais": "Colômbia",
+    "seculo": "XX",
+    "periodo": "América contemporânea",
+    "tipo": "Dissertação",
+    "arquivo": "https://acervus.unicamp.br/Busca/Download?codigoArquivo=495528&tipoMidia=0"
+  },
+  {
+    "titulo": "O sonho e o despertar por vir, o dialogo solitario da confissão: uma reflexão sobre o sacramento da penitencia na Nova Espanha na passagem do seculo XVI para o XVII",
+    "autor": "Marcus Vinicius de Morais",
+    "ano": 2006,
+    "pais": "México",
+    "seculo": "XVI",
+    "periodo": "América colonial",
+    "tipo": "Dissertação",
+    "arquivo": "https://acervus.unicamp.br/Busca/Download?codigoArquivo=497502&tipoMidia=0"
+  },
+  {
+    "titulo": "Da idolatria indigena a conversão cristã no Mexico do seculo XVI: uma analise da obra do frei Toribio Motolinia",
+    "autor": "Anderson dos Reis",
+    "ano": 2004,
+    "pais": "México",
+    "seculo": "XVI",
+    "periodo": "América colonial",
+    "tipo": "Dissertação",
+    "arquivo": "https://acervus.unicamp.br/Busca/Download?codigoArquivo=495097&tipoMidia=0"
+  },
+  {
+    "titulo": "A conquista do Prata: analise da cronica de Ulrico Schmidl",
+    "autor": "Luís Guilherme Assis Kalil",
+    "ano": 2008,
+    "pais": "Rio da Prata",
+    "seculo": "XVI",
+    "periodo": "América colonial",
+    "tipo": "Dissertação",
+    "arquivo": "https://acervus.unicamp.br/Busca/Download?codigoArquivo=497430&tipoMidia=0"
+  },
+  {
+    "titulo": "A hagiografia de Santa Rosa de Lima: narrando a santidade na América",
+    "autor": "Olivia Barreto de Oliveira Cappi",
+    "ano": 2011,
+    "pais": "Peru",
+    "seculo": "XVI",
+    "periodo": "América colonial",
+    "tipo": "Dissertação",
+    "arquivo": "https://acervus.unicamp.br/Busca/Download?codigoArquivo=496103&tipoMidia=0"
+  },
+  {
+    "titulo": "¡A mis lectorcitos, la nación!: a construção das memórias mexicanas através dos manuais escolares durante o governo de Porfírio Díaz (1876-1911)",
+    "autor": "Júlia Rany Campos Uzun",
+    "ano": 2013,
+    "pais": "México",
+    "seculo": "XX",
+    "periodo": "América contemporânea",
+    "tipo": "Dissertação",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=497066&tipoMidia=0"
+  },
+  {
+    "titulo": "As quimeras do cronista: frei Diego Durán e a produção de uma crônica de Índias",
+    "autor": "Renato Denadai da Silva",
+    "ano": 2014,
+    "pais": "México",
+    "seculo": "XVI",
+    "periodo": "América colonial",
+    "tipo": "Dissertação",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=495284&tipoMidia=0"
+  },
+  {
+    "titulo": "¿Qué son las cosas de dios? no son nada: tramas e conflitos no processo inquisitorial contra o cacique de Texcoco (1539)",
+    "autor": "Saulo Mendes Goulart",
+    "ano": 2012,
+    "pais": "México",
+    "seculo": "XVI",
+    "periodo": "América colonial",
+    "tipo": "Dissertação",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=496236&tipoMidia=0"
+  },
+  {
+    "titulo": "A inquisição entre homens e deuses: Santo Ofício, evangelização e política punitiva na Nova Espanha (1521-1545)",
+    "autor": "Saulo Mendes Goulart",
+    "ano": 2016,
+    "pais": "México",
+    "seculo": "XVI",
+    "periodo": "América colonial",
+    "tipo": "Tese",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=496224&tipoMidia=0"
+  },
+  {
+    "titulo": "A ascensão da idolatria e a decadência da evangelização no século XVII: uma análise de crônicas da Nova Espanha",
+    "autor": "Ana Carolina Machado de Souza",
+    "ano": 2014,
+    "pais": "México",
+    "seculo": "XVI",
+    "periodo": "América colonial",
+    "tipo": "Dissertação",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=495399&tipoMidia=0"
+  },
+  {
+    "titulo": "As terras do grande espírito: políticas indigenistas nos Estados Unidos do século XIX",
+    "autor": "Ricardo Amarante Turatti",
+    "ano": 2019,
+    "pais": "Estados Unidos",
+    "seculo": "XIX",
+    "periodo": "América independente",
+    "tipo": "Tese",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=494591&tipoMidia=0"
+  },
+  {
+    "titulo": "Os Espelhos da América: simbolização identitária, nos séculos XIX e XX, baseada em A Tempestade, de William Shakespeare",
+    "autor": "Ricardo Amarante Turatti",
+    "ano": 2014,
+    "pais": "",
+    "seculo": "XX",
+    "periodo": "América independente",
+    "tipo": "Dissertação",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=494691&tipoMidia=0"
+  },
+  {
+    "titulo": "Entre o bem e o mal: María Pizarro, a sombra de Francisco de la Cruz. Um caso de espiritualidade e política na Lima do século XVI",
+    "autor": "Eduardo Andrés Ruz Torres",
+    "ano": 2021,
+    "pais": "Peru",
+    "seculo": "XVI",
+    "periodo": "América colonial",
+    "tipo": "Tese",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=590938&tipoMidia=0"
+  },
+  {
+    "titulo": "A fórmula demoníaca entre jesuítas e agostinianos nos Andes peruanos do século XVI",
+    "autor": "Eduardo Andrés Ruz Torres",
+    "ano": 2015,
+    "pais": "Peru",
+    "seculo": "XVI",
+    "periodo": "América colonial",
+    "tipo": "Dissertação",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=495610&tipoMidia=0"
+  },
+  {
+    "titulo": "A construção dos relatos de pacificação chichimeca: uma análise a partir da información de oficio de Luis de Carvajal (1587)",
+    "autor": "Plinio Felipe Amaral Pires",
+    "ano": 2019,
+    "pais": "México",
+    "seculo": "XVI",
+    "periodo": "América colonial",
+    "tipo": "Dissertação",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=497177&tipoMidia=0"
+  },
+  {
+    "titulo": "A escrita da História e os Anales del Museo Nacional de México: história e memória em construção (1877-1909)",
+    "autor": "Ana Carolina Machado de Souza",
+    "ano": 2021,
+    "pais": "México",
+    "seculo": "XIX",
+    "periodo": "América independente",
+    "tipo": "Tese",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=591349&tipoMidia=0"
+  },
+  {
+    "titulo": "O Novo Mundo pelo olhar dos cronistas espanhóis (século XVI)",
+    "autor": "Maria Emília Granduque José",
+    "ano": 2017,
+    "pais": "México",
+    "seculo": "XVI",
+    "periodo": "América colonial",
+    "tipo": "Tese",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=496303&tipoMidia=0"
+  },
+  {
+    "titulo": "Where we've planted our roots : representações da colônia puritana no século XIX",
+    "autor": "Gabriela de Souza Morais",
+    "ano": 2018,
+    "pais": "Estados Unidos",
+    "seculo": "XIX",
+    "periodo": "América independente",
+    "tipo": "Dissertação",
+    "arquivo": "https://acervus.unicamp.br/Busca/Download?codigoArquivo=497064&tipoMidia=0"
+  },
+  {
+    "titulo": "Entre o fabuloso e o verossimil: cronicas e epistemologia no processo de cognição da América",
+    "autor": "Flavia Preto de Godoy Oliveira",
+    "ano": 2010,
+    "pais": "",
+    "seculo": "XVII",
+    "periodo": "América colonial",
+    "tipo": "Dissertação",
+    "arquivo": "https://acervus.unicamp.br/Busca/Download?codigoArquivo=498514&tipoMidia=0"
+  },
+  {
+    "titulo": "Ecos da Revolução cubana no Chile da Unidade Popular: a “Declaración chilena” e a resposta de Enrique Lihn",
+    "autor": "Natália Ayo Schmiedecke",
+    "ano": 2020,
+    "pais": "Chile",
+    "seculo": "XX",
+    "periodo": "América contemporânea",
+    "tipo": "Artigo",
+    "arquivo": "https://acervus.unicamp.br/Busca/Download?codigoArquivo=537111&tipoMidia=0"
+  },
+  {
+    "titulo": "¿Qué pasa, General? : a relação discursiva do periódico montonero \"El Peronista lucha por la liberación\" com o 1º de Maio de 1974. (1974)",
+    "autor": "Pedro Baruch",
+    "ano": 2026,
+    "pais": "Argentina",
+    "seculo": "XX",
+    "periodo": "América contemporânea",
+    "tipo": "Monografia (TCC)",
+    "arquivo": "https://repositorio.unicamp.br/Busca/Download?codigoArquivo=604292&tipoMidia=0"
   }
 ]

@@ -9,11 +9,11 @@
     'Argentina', 'Bolívia', 'Brasil', 'Chile', 'Colômbia', 'Costa Rica',
     'Cuba', 'El Salvador', 'Equador', 'Estados Unidos', 'Guatemala',
     'Haiti', 'Honduras', 'Jamaica', 'México', 'Nicarágua', 'Panamá',
-    'Paraguai', 'Peru', 'Porto Rico', 'República Dominicana',
+    'Paraguai', 'Peru', 'Porto Rico', 'República Dominicana', 'Rio da Prata',
     'Trinidad e Tobago', 'Uruguai', 'Venezuela'
   ];
   const SECULOS = ['XVI', 'XVII', 'XVIII', 'XIX', 'XX', 'XXI'];
-  const PERIODOS = ['América colonial', 'América independente', 'América contemporânea'];
+  const PERIODOS = ['América pré-hispânica', 'América colonial', 'América independente', 'América contemporânea'];
 
   const state = { all: [], query: '', pais: '', seculo: '', periodo: '', tipo: '' };
 
