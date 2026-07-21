@@ -128,7 +128,7 @@
 
   const populatePaises = () => {
     const paises = [...new Set(state.all.map((w) => w.pais).filter(Boolean))].sort();
-    populateSelect(selPais, paises, 'Todos os países');
+    populateSelect(selPais, paises, 'Todas as regiões');
   };
 
   const boot = (data) => {
