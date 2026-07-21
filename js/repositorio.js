@@ -15,7 +15,7 @@
   const SECULOS = ['XVI', 'XVII', 'XVIII', 'XIX', 'XX', 'XXI'];
   const PERIODOS = ['América pré-hispânica', 'América colonial', 'América independente', 'América contemporânea'];
 
-  const state = { all: [], query: '', pais: '', seculo: '', periodo: '', tipo: '' };
+  const state = { all: [], query: '', pais: '', seculo: '', periodo: '', tipo: '', tematica: '' };
 
   const q = (sel) => document.querySelector(sel);
   const tbody = q('#works-tbody');
@@ -25,6 +25,7 @@
   const selSeculo = q('#filter-seculo');
   const selPeriodo = q('#filter-periodo');
   const selTipo = q('#filter-tipo');
+  const selTematica = q('#filter-tematica');
   const clearBtn = q('#clear-filters');
 
   const populateSelect = (select, values, allLabel) => {
@@ -62,9 +63,10 @@
     if (state.seculo && w.seculo !== state.seculo) return false;
     if (state.periodo && w.periodo !== state.periodo) return false;
     if (state.tipo && w.tipo !== state.tipo) return false;
+    if (state.tematica && w.tematica !== state.tematica) return false;
     if (state.query) {
       const haystack = normalize(
-        [w.titulo, w.autor, w.ano, w.pais, w.tipo, w.periodo, w.seculo].join(' ')
+        [w.titulo, w.autor, w.ano, w.pais, w.tipo, w.periodo, w.seculo, w.tematica].join(' ')
       );
       if (!haystack.includes(normalize(state.query))) return false;
     }
@@ -113,10 +115,11 @@
     selSeculo.addEventListener('change', (e) => { state.seculo = e.target.value; render(); });
     selPeriodo.addEventListener('change', (e) => { state.periodo = e.target.value; render(); });
     selTipo.addEventListener('change', (e) => { state.tipo = e.target.value; render(); });
+    selTematica.addEventListener('change', (e) => { state.tematica = e.target.value; render(); });
     clearBtn.addEventListener('click', () => {
-      state.query = state.pais = state.seculo = state.periodo = state.tipo = '';
+      state.query = state.pais = state.seculo = state.periodo = state.tipo = state.tematica = '';
       search.value = '';
-      selPais.value = selSeculo.value = selPeriodo.value = selTipo.value = '';
+      selPais.value = selSeculo.value = selPeriodo.value = selTipo.value = selTematica.value = '';
       render();
     });
   };
@@ -126,9 +129,15 @@
     populateSelect(selTipo, tipos, 'Todos os tipos');
   };
 
+  const populateTematicas = () => {
+    const tematicas = [...new Set(state.all.map((w) => w.tematica).filter(Boolean))].sort();
+    populateSelect(selTematica, tematicas, 'Todas as temáticas');
+  };
+
   const boot = (data) => {
     state.all = Array.isArray(data) ? data : [];
     populateTipos();
+    populateTematicas();
     bindEvents();
     render();
   };
