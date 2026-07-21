@@ -5,13 +5,6 @@
   //  documentado nele) e faça commit/PR no GitHub.
   // =====================================================================
 
-  const PAISES = [
-    'Argentina', 'Bolívia', 'Brasil', 'Chile', 'Colômbia', 'Costa Rica',
-    'Cuba', 'El Salvador', 'Equador', 'Estados Unidos', 'Guatemala',
-    'Haiti', 'Honduras', 'Jamaica', 'México', 'Nicarágua', 'Panamá',
-    'Paraguai', 'Peru', 'Porto Rico', 'República Dominicana', 'Rio da Prata',
-    'Trinidad e Tobago', 'Uruguai', 'Venezuela'
-  ];
   const SECULOS = ['XVI', 'XVII', 'XVIII', 'XIX', 'XX', 'XXI'];
   const PERIODOS = ['América pré-hispânica', 'América colonial', 'América independente', 'América contemporânea'];
 
@@ -33,7 +26,6 @@
       values.map((v) => `<option value="${v}">${v}</option>`).join('');
   };
 
-  populateSelect(selPais, PAISES, 'Todos os países');
   populateSelect(selSeculo, SECULOS, 'Todos os séculos');
   populateSelect(selPeriodo, PERIODOS, 'Todos os períodos');
 
@@ -134,8 +126,14 @@
     populateSelect(selTematica, tematicas, 'Todas as temáticas');
   };
 
+  const populatePaises = () => {
+    const paises = [...new Set(state.all.map((w) => w.pais).filter(Boolean))].sort();
+    populateSelect(selPais, paises, 'Todos os países');
+  };
+
   const boot = (data) => {
     state.all = Array.isArray(data) ? data : [];
+    populatePaises();
     populateTipos();
     populateTematicas();
     bindEvents();
