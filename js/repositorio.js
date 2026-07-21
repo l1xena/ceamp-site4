@@ -1,11 +1,8 @@
 (() => {
   // =====================================================================
-  //  CONFIGURAÇÃO — cole aqui a URL do CSV publicado da sua planilha.
-  //  (No guia: Google Sheets → Arquivo → Compartilhar → Publicar na web →
-  //   aba "Trabalhos" → CSV → Publicar → copie o link e cole abaixo.)
-  //  Enquanto estiver vazio, o site usa os dados de exemplo em
-  //  data/trabalhos.json.
-  const SHEET_CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTmBQmDGsWFbpGSdO9kIexVN_vNdN-dWvtIc1KHhSAdJq33hFBch1DcqYjpEzN7DXLxH7m6R-HPkDKN/pub?gid=204310317&single=true&output=csv";
+  //  DADOS — o acervo é lido de data/trabalhos.json, versionado no repo.
+  //  Para adicionar/editar trabalhos, edite esse arquivo (veja o schema
+  //  documentado nele) e faça commit/PR no GitHub.
   // =====================================================================
 
   const PAISES = [
@@ -42,6 +39,24 @@
   const normalize = (str) =>
     (str || '').toString().normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 
+  const escapeHtml = (str) => (str ?? '').toString()
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+
+  // Restringe o link a http(s) ou caminho relativo; nunca javascript: ou data:.
+  const isSafeUrl = (url) => {
+    if (!url) return false;
+    try {
+      const u = new URL(url, window.location.href);
+      return u.protocol === 'http:' || u.protocol === 'https:';
+    } catch {
+      return false;
+    }
+  };
+
   const matchesFilters = (w) => {
     if (state.pais && w.pais !== state.pais) return false;
     if (state.seculo && w.seculo !== state.seculo) return false;
@@ -72,21 +87,21 @@
     }
 
     tbody.innerHTML = filtered.map((w) => {
-      const tags = [w.pais, `Séc. ${w.seculo}`, w.periodo]
+      const tags = [w.pais, w.seculo ? `Séc. ${w.seculo}` : '', w.periodo]
         .filter(Boolean)
-        .map((t) => `<span class="tag">${t}</span>`).join('');
-      const link = w.arquivo
-        ? `<a class="work-download" href="${w.arquivo}" target="_blank" rel="noopener">Baixar PDF ↓</a>`
+        .map((t) => `<span class="tag">${escapeHtml(t)}</span>`).join('');
+      const link = isSafeUrl(w.arquivo)
+        ? `<a class="work-download" href="${escapeHtml(w.arquivo)}" target="_blank" rel="noopener">Baixar PDF ↓</a>`
         : `<span class="tag">Indisponível</span>`;
       return `
         <tr>
           <td class="work-title">
-            ${w.titulo}
-            <small>${w.tipo || ''}</small>
+            ${escapeHtml(w.titulo)}
+            <small>${escapeHtml(w.tipo || '')}</small>
             <div class="tags">${tags}</div>
           </td>
-          <td>${w.autor || '—'}</td>
-          <td>${w.ano || '—'}</td>
+          <td>${escapeHtml(w.autor || '—')}</td>
+          <td>${escapeHtml(w.ano || '—')}</td>
           <td>${link}</td>
         </tr>`;
     }).join('');
@@ -111,53 +126,6 @@
     populateSelect(selTipo, tipos, 'Todos os tipos');
   };
 
-  // ---- Lê CSV (lida com vírgulas dentro de aspas, quebras de linha etc.) ----
-  const parseCSV = (text) => {
-    text = text.replace(/^\uFEFF/, '');
-    const rows = []; let row = [], field = '', inQuotes = false;
-    for (let i = 0; i < text.length; i++) {
-      const c = text[i];
-      if (inQuotes) {
-        if (c === '"') { if (text[i + 1] === '"') { field += '"'; i++; } else inQuotes = false; }
-        else field += c;
-      } else {
-        if (c === '"') inQuotes = true;
-        else if (c === ',') { row.push(field); field = ''; }
-        else if (c === '\n') { row.push(field); rows.push(row); row = []; field = ''; }
-        else if (c === '\r') { /* ignora */ }
-        else field += c;
-      }
-    }
-    if (field.length || row.length) { row.push(field); rows.push(row); }
-    const headers = (rows.shift() || []).map((h) => h.trim());
-    return rows
-      .filter((r) => r.some((x) => x && x.trim()))
-      .map((r) => { const o = {}; headers.forEach((h, i) => o[h] = r[i] !== undefined ? r[i] : ''); return o; });
-  };
-
-  // ---- Converte as linhas da planilha nos campos que o site usa ----
-  const rowsToWorks = (rows) => {
-    const pick = (obj, kw) => {
-      for (const k in obj) {
-        if (normalize(k).includes(kw)) return (obj[k] || '').toString();
-      }
-      return '';
-    };
-    return rows.map((o) => {
-      const anoRaw = pick(o, 'ano').replace(/\D/g, '');
-      return {
-        titulo: pick(o, 'titulo').trim(),
-        autor: pick(o, 'autor').trim(),
-        ano: anoRaw ? Number(anoRaw) : '',
-        pais: pick(o, 'pais').trim(),
-        seculo: pick(o, 'seculo').trim(),
-        periodo: pick(o, 'periodo').trim(),
-        tipo: pick(o, 'tipo').trim(),
-        arquivo: (pick(o, 'link') || pick(o, 'pdf')).trim()
-      };
-    }).filter((w) => w.titulo);
-  };
-
   const boot = (data) => {
     state.all = Array.isArray(data) ? data : [];
     populateTipos();
@@ -173,20 +141,8 @@
       </div></td></tr>`;
   };
 
-  const loadFromJSON = () => {
-    fetch('data/trabalhos.json')
-      .then((r) => { if (!r.ok) throw new Error('json'); return r.json(); })
-      .then(boot)
-      .catch(showError);
-  };
-
-  // Se a URL da planilha estiver preenchida, lê de lá; senão, usa o JSON local.
-  if (SHEET_CSV_URL && /^https?:\/\//.test(SHEET_CSV_URL)) {
-    fetch(SHEET_CSV_URL)
-      .then((r) => { if (!r.ok) throw new Error('csv'); return r.text(); })
-      .then((t) => boot(rowsToWorks(parseCSV(t))))
-      .catch(loadFromJSON); // se a planilha falhar, cai no JSON local
-  } else {
-    loadFromJSON();
-  }
+  fetch('data/trabalhos.json')
+    .then((r) => { if (!r.ok) throw new Error('json'); return r.json(); })
+    .then(boot)
+    .catch(showError);
 })();
