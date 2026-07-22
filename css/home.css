@@ -55,7 +55,7 @@ body.home .hero img{
    site (compare com .page-hero / .lead). */
 .home-sobre{
   background:var(--accent-soft);
-  padding:var(--space-9) var(--pad-x);
+  padding:var(--space-7) var(--pad-x) var(--space-9);
 }
 .home-repositorio-recente{
   background:var(--bg-soft);
@@ -78,6 +78,9 @@ body.home .hero img{
   color:var(--accent-hover);
   font-weight:700;
   margin-bottom:var(--space-4);
+}
+.home-sobre .home-section-label{
+  margin-bottom:var(--space-6);
 }
 .home-sobre p{
   color:var(--ink-soft);
