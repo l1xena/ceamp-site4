@@ -161,27 +161,39 @@ a { color: inherit; text-decoration: none; }
   position: relative;
 }
 
+/* .nav-dropdown é a área "sensível" ao hover — inclui o vão acima do
+   cartão como padding real (não um gap solto), pra não perder o hover
+   no caminho até o submenu (bug reportado). O cartão visível fica em
+   .nav-dropdown-inner, por dentro desse padding. */
 .nav-dropdown {
   position: absolute;
   top: 100%;
   left: 0;
-  margin-top: 20px;
+  padding-top: 20px;
   min-width: 220px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition), visibility var(--transition);
+}
+
+.nav-dropdown-inner {
   background: var(--bg);
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-md);
   padding: 8px;
-  opacity: 0;
-  visibility: hidden;
   transform: translateY(-8px);
-  transition: opacity var(--transition), transform var(--transition), visibility var(--transition);
+  transition: transform var(--transition);
 }
 
 .nav-item:hover .nav-dropdown,
 .nav-item:focus-within .nav-dropdown {
   opacity: 1;
   visibility: visible;
+}
+
+.nav-item:hover .nav-dropdown-inner,
+.nav-item:focus-within .nav-dropdown-inner {
   transform: translateY(0);
 }
 
@@ -327,8 +339,9 @@ p.lead { font-size: 19px; color: var(--ink); }
 
 .historia-images {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-5);
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+  align-content: start;
 }
 
 .historia-images figure {
@@ -364,14 +377,6 @@ p.lead { font-size: 19px; color: var(--ink); }
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: var(--space-6);
 }
-
-.timeline-item {
-  padding-left: var(--space-4);
-  border-left: 2px solid var(--line);
-  transition: border-color var(--transition);
-}
-
-.timeline-item:hover { border-left-color: var(--accent); }
 
 .timeline-item .year {
   font-size: 32px;
@@ -836,7 +841,7 @@ p.lead { font-size: 19px; color: var(--ink); }
 /* ---------- Footer ---------- */
 .site-footer {
   border-top: 1px solid var(--line);
-  padding: 44px var(--pad-x) 24px;
+  padding: 40px var(--pad-x);
   margin-top: var(--space-9);
   background: var(--bg);
 }
@@ -848,27 +853,23 @@ p.lead { font-size: 19px; color: var(--ink); }
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 18px 32px;
+  gap: 14px 32px;
 }
 
-.footer-brand {
+.footer-logos {
   display: flex;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 10px;
+  align-items: center;
+  gap: 22px;
 }
 
-.footer-inner .brand-small {
-  color: var(--ink);
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+.footer-logos img {
+  height: 30px;
+  width: auto;
+  display: block;
+  transition: opacity var(--transition);
 }
 
-.footer-tagline {
-  font-size: 13px;
-  color: var(--ink-soft);
-}
+.footer-logos a:hover img { opacity: 0.75; }
 
 .footer-contact {
   display: flex;
@@ -890,29 +891,11 @@ p.lead { font-size: 19px; color: var(--ink); }
 .footer-contact a { transition: opacity var(--transition); }
 .footer-contact a:hover { opacity: 0.7; text-decoration: underline; }
 
-.footer-logos {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-}
-
-.footer-logos img {
-  height: 32px;
-  width: auto;
-  display: block;
-  transition: opacity var(--transition);
-}
-
-.footer-logos a:hover img { opacity: 0.75; }
-
-.footer-bottom {
-  max-width: var(--max);
-  margin: 16px auto 0;
-  padding-top: 14px;
-  border-top: 1px solid currentColor;
-  opacity: 0.5;
-  font-size: 11.5px;
+.footer-copyright {
+  font-size: 12px;
   letter-spacing: 0.06em;
+  opacity: 0.75;
+  white-space: nowrap;
 }
 
 /* Home footer has no top margin because hero fills viewport */
@@ -967,13 +950,17 @@ p.lead { font-size: 19px; color: var(--ink); }
     position: static;
     opacity: 1;
     visibility: visible;
-    transform: none;
-    box-shadow: none;
-    border: none;
-    background: none;
-    padding: 6px 0 0 18px;
+    padding: 0 0 0 18px;
     margin-top: 12px;
     min-width: 0;
+  }
+
+  .nav-dropdown-inner {
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    transform: none;
   }
 
   .nav-dropdown a {
@@ -997,7 +984,6 @@ p.lead { font-size: 19px; color: var(--ink); }
   .works-table td.work-title { font-size: 16px; }
 
   .footer-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
-  .footer-bottom { text-align: center; }
 }
 /* Celular: áreas de toque maiores no menu */
 @media (max-width: 720px) {

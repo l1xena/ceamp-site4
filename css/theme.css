@@ -50,10 +50,7 @@
   color:var(--on-header);
 }
 .footer-inner{ color:var(--on-header); }
-.footer-inner .muted{ opacity:0.85; }
-.footer-inner .brand-small{ color:var(--on-header); }
-.footer-tagline{ color:var(--on-header); opacity:0.8; }
-.footer-bottom{ color:var(--on-header); }
+.footer-copyright{ color:var(--on-header); }
 
 /* ---- Celular: painel lateral do menu também laranja ---- */
 @media (max-width:720px){

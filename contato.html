@@ -20,8 +20,10 @@
       <div class="nav-item">
         <a href="pesquisadores.html">Pesquisadores</a>
         <div class="nav-dropdown">
-          <a href="pesquisadores.html">Pesquisadores</a>
-          <a href="redes-parceiros.html">Redes e Parceiros</a>
+          <div class="nav-dropdown-inner">
+            <a href="pesquisadores.html">Pesquisadores</a>
+            <a href="redes-parceiros.html">Redes e Parceiros</a>
+          </div>
         </div>
       </div>
       <a href="repositorio.html">Repositório</a>
@@ -92,9 +94,16 @@
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <div class="footer-brand">
-        <span class="brand-small">CEAMP</span>
-        <span class="footer-tagline">Centro de Estudos Americanos da Unicamp</span>
+      <div class="footer-logos">
+        <a href="index.html" aria-label="CEAMP">
+          <img src="img/logos/ceamp-black.png" alt="CEAMP" />
+        </a>
+        <a href="https://www.unicamp.br/" target="_blank" rel="noopener" aria-label="Unicamp">
+          <img src="img/logos/unicamp.png" alt="Unicamp" />
+        </a>
+        <a href="https://www.ifch.unicamp.br/" target="_blank" rel="noopener" aria-label="IFCH">
+          <img src="img/logos/ifch.png" alt="IFCH" />
+        </a>
       </div>
       <div class="footer-contact">
         <a href="mailto:ceamp@unicamp.br">
@@ -106,17 +115,7 @@
           IFCH · Unicamp — Campinas, SP
         </address>
       </div>
-      <div class="footer-logos">
-        <a href="https://www.unicamp.br/" target="_blank" rel="noopener" aria-label="Unicamp">
-          <img src="img/logos/unicamp.png" alt="Unicamp" />
-        </a>
-        <a href="https://www.ifch.unicamp.br/" target="_blank" rel="noopener" aria-label="IFCH">
-          <img src="img/logos/ifch.png" alt="IFCH" />
-        </a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>Todos os direitos reservados · <span id="year"></span></span>
+      <span class="footer-copyright">Todos os direitos reservados · <span id="year"></span></span>
     </div>
   </footer>
 
