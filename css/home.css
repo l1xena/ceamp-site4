@@ -24,7 +24,10 @@ body.home .site-header{
   padding:0 var(--pad-x);
 }
 body.home .nav{ gap:32px; }
-body.home .nav a{ font-size:13px; letter-spacing:0.14em; text-transform:uppercase; padding:6px 0; }
+/* Só os links de topo do menu (não os do submenu, que seguem o padrão
+   das outras páginas em .nav-dropdown a no style.css). */
+body.home .nav > a,
+body.home .nav-item > a{ font-size:13px; letter-spacing:0.14em; text-transform:uppercase; padding:6px 0; }
 
 /* Imagem no meio: inteira (sem corte) + leve ampliada */
 body.home .hero{
@@ -78,7 +81,8 @@ body.home .footer-inner{ max-width:none; font-size:13px; letter-spacing:0.06em; 
     z-index:99;
   }
   body.home .nav.open{ transform:translateX(0); }
-  body.home .nav a{ font-size:15px; }
+  body.home .nav > a,
+  body.home .nav-item > a{ font-size:15px; }
 }
 /* Celular: a arte preenche a tela (sem faixa rosa nas laterais) */
 @media (max-width: 720px) {

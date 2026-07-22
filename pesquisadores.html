@@ -85,9 +85,6 @@
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-logos">
-        <a href="index.html" aria-label="CEAMP">
-          <img src="img/logos/ceamp-black.png" alt="CEAMP" />
-        </a>
         <a href="https://www.unicamp.br/" target="_blank" rel="noopener" aria-label="Unicamp">
           <img src="img/logos/unicamp.png" alt="Unicamp" />
         </a>
@@ -138,17 +135,63 @@
   <script src="js/main.js"></script>
   <script>
     // =====================================================================
-    //  PESQUISADORES — edite os arrays abaixo para adicionar, remover ou
-    //  alterar pessoas. Coloque as fotos em img/pesquisadores/<slug>.jpg
+    //  PESQUISADORES — guia de preenchimento
+    // =====================================================================
     //
-    //  Campo "bio": texto livre com formação/mini-bio, mostrado no pop-up
-    //  que abre ao clicar na pessoa. Comece vazio ("") e preencha quando
-    //  quiser — sem bio, o pop-up mostra "Biografia em breve.".
+    //  1) Onde entra cada pessoa
+    //     - "coordenacao": coordenadores do CEAMP. Único grupo que usa o
+    //       campo "papel" (ex.: 'Coordenadora'), mostrado como legenda no
+    //       card e no pop-up.
+    //     - "pesquisadores": pesquisadores em atividade.
+    //     - "associados": pesquisadores associados.
+    //     Cada pessoa é um objeto  { nome, slug, lattes, bio, apelidos? }.
+    //     Copie um objeto existente do grupo certo como modelo em vez de
+    //     escrever um do zero — evita esquecer alguma chave.
     //
-    //  Os trabalhos do Repositório (data/trabalhos.json) aparecem no
-    //  pop-up automaticamente, cruzando pelo nome do autor — não precisa
-    //  editar nada aqui pra isso, só manter o nome parecido em ambos os
-    //  lugares.
+    //  2) Campos obrigatórios
+    //     - nome: nome completo, com acentos e maiúsculas corretos — é o
+    //       que aparece no card, no pop-up E o que faz o cruzamento com o
+    //       Repositório (ver item 4). Sem "nome" a pessoa não renderiza.
+    //     - slug: versão do nome em minúsculas, sem acento, com hífen no
+    //       lugar de espaço (ex.: 'José Alves' -> 'jose-alves'). Precisa
+    //       ser ÚNICO em TODOS os três grupos — é usado como chave do
+    //       pop-up e como nome do arquivo da foto.
+    //     - lattes: link completo do Currículo Lattes (com http:// ou
+    //       https://). Sem link, use '' — o botão "Currículo Lattes" do
+    //       pop-up some sozinho se o link não for http(s) válido.
+    //     - bio: texto livre (formação/mini-bio) mostrado no pop-up.
+    //       Comece vazio ('') e preencha quando quiser — sem bio, o
+    //       pop-up mostra "Biografia em breve.".
+    //
+    //  3) Foto
+    //     Salve o arquivo em img/pesquisadores/<slug>.jpg (mesmo slug do
+    //     objeto, sempre .jpg). Sem foto, o card some a imagem sozinho
+    //     (onerror), não quebra o layout — não precisa avisar nada aqui.
+    //
+    //  4) ATENÇÃO REDOBRADA COM OS NOMES (cruzamento com o Repositório)
+    //     Os trabalhos de data/trabalhos.json aparecem no pop-up de cada
+    //     pessoa AUTOMATICAMENTE, comparando o campo "autor" de cada
+    //     trabalho com o "nome" daqui (ignorando acentos/maiúsculas). Ou
+    //     seja: um nome digitado de um jeito aqui e de outro jeito lá
+    //     faz o trabalho não aparecer para ninguém — sem erro visível,
+    //     ele simplesmente some da lista.
+    //       - Antes de salvar um nome novo ou editado, confira se ele
+    //         está escrito EXATAMENTE do mesmo jeito (ou de forma bem
+    //         parecida) em data/trabalhos.json.
+    //       - Nome de casada/casado, abreviação, ou qualquer forma
+    //         alternativa que apareça como autor no Repositório: NÃO
+    //         edite o "nome" pra isso. Em vez disso, adicione essa forma
+    //         em "apelidos" (array de strings), mantendo o "nome"
+    //         principal como está. Exemplo já em uso:
+    //           { nome: 'Maria Clara Figueiredo', ..., apelidos: ['Maria Clara da Silveira'] }
+    //       - Depois de adicionar/editar um nome ou apelido, sempre
+    //         confira no site (abrindo o pop-up da pessoa) se a lista de
+    //         "Trabalhos no repositório" apareceu como esperado.
+    //       - Cuidado especial com homônimos e nomes muito parecidos: o
+    //         cruzamento é por aproximação (um nome pode "conter" o
+    //         outro), então dois pesquisadores com nomes parecidos podem
+    //         puxar o trabalho um do outro. Confira o resultado no
+    //         pop-up dos dois.
     // =====================================================================
     const coordenacao = [
       { nome: 'Ivia Minelli', slug: 'ivia-minelli', papel: 'Coordenadora', lattes: 'http://lattes.cnpq.br/2504619945377334', bio: '' },
