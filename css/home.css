@@ -6,7 +6,7 @@
    ========================================================= */
 
 body.home{
-  --blush:#F3ECE2;     /* neutro quente e sóbrio, combina com a paleta acadêmica */
+  --blush:#FDD5C6;     /* rosinha do fundo (igual ao da arte) */
   --img-scale:1.05;    /* ampliada leve da arte só pra fechar a frestinha */
 
   height:100dvh;
@@ -104,19 +104,14 @@ body.home .footer-inner{ max-width:none; font-size:13px; letter-spacing:0.06em; 
     display: block;
     background: #fff;
     border: 1px solid var(--line-strong);
-    border-radius: var(--radius-md);
-    padding: 20px 22px;
+    padding: 18px 20px;
     text-decoration: none;
     color: var(--ink);
-    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    transition: border-color 0.2s ease;
   }
-  .home-card:hover {
-    border-color: var(--header);
-    box-shadow: var(--shadow-sm);
-    transform: translateY(-2px);
-  }
-  .home-card h3 { font-family: var(--font-display); font-size: 17px; font-weight: 600; letter-spacing: -0.005em; }
-  .home-card p { font-size: 13.5px; line-height: 1.55; color: var(--ink-muted); margin-top: 6px; }
+  .home-card:hover { border-color: var(--header); }
+  .home-card h3 { font-size: 16px; font-weight: 700; letter-spacing: -0.01em; }
+  .home-card p { font-size: 13px; line-height: 1.5; color: var(--ink-muted); margin-top: 6px; }
   .home-card .go {
     display: inline-block; margin-top: 12px;
     font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
