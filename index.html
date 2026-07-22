@@ -43,11 +43,14 @@
   <section class="home-sobre">
     <div class="home-sobre-inner">
       <p class="home-section-label">Sobre</p>
-      <h2>O CEAMP em poucas palavras</h2>
+      <h2>Centro de Estudos Americanos da Unicamp</h2>
       <p>
-        Grupo de pesquisa do Instituto de Filosofia e Ciências Humanas da Unicamp
-        dedicado à história das Américas desde 2006, reunindo coordenação,
-        pesquisadores e pesquisadores associados.
+        O CEAMP é um centro de pesquisa sediado no Instituto de Filosofia e
+        Ciências Humanas da Unicamp, dedicado aos estudos sobre a história da
+        América Latina. Desde o final da década de 1980, reúne pesquisadores
+        comprometidos com a produção e a difusão do conhecimento sobre o
+        continente. Neste espaço, você pode conhecer nossa trajetória, nossos
+        pesquisadores e nossa produção acadêmica.
       </p>
       <a href="historia.html" class="home-section-link">Nossa história →</a>
     </div>
@@ -144,15 +147,18 @@
             .sort((a, b) => Number(b.ano) - Number(a.ano))
             .slice(0, 3);
 
+          const iconAuthor = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>';
+
           list.innerHTML = recentes.map((w) => {
             const titleHtml = isSafeUrl(w.arquivo)
               ? `<a href="${escapeHtml(w.arquivo)}" target="_blank" rel="noopener">${escapeHtml(w.titulo)}</a>`
               : escapeHtml(w.titulo);
+            const meta = [w.autor, w.tipo].filter(Boolean).map(escapeHtml).join(' · ');
             return `
               <li class="home-recent-work">
                 <div>
                   <p class="home-recent-work-title">${titleHtml}</p>
-                  ${w.autor ? `<p class="home-recent-work-author">${escapeHtml(w.autor)}</p>` : ''}
+                  ${meta ? `<p class="home-recent-work-author">${iconAuthor}${meta}</p>` : ''}
                 </div>
                 <span class="home-recent-work-year">${escapeHtml(w.ano)}</span>
               </li>

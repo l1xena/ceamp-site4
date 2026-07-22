@@ -130,10 +130,14 @@ body.home .hero img{
 .home-recent-work-title a{ color:inherit; }
 .home-recent-work-title a:hover{ color:var(--accent); }
 .home-recent-work-author{
+  display:flex;
+  align-items:center;
+  gap:6px;
   font-size:14px;
   color:var(--ink-muted);
-  margin:5px 0 0;
+  margin:6px 0 0;
 }
+.home-recent-work-author svg{ flex:none; opacity:0.85; }
 .home-recent-work-year{
   flex:none;
   font-size:13px;
