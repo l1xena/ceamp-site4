@@ -112,7 +112,7 @@ a { color: inherit; text-decoration: none; }
 
 .brand-logo {
   display: block;
-  height: 28px;
+  height: 34px;
   width: auto;
 }
 
@@ -1087,7 +1087,7 @@ body.modal-open { overflow: hidden; }
   .site-header.solid .nav a,
   .nav a { color: var(--ink); }
 
-  .brand-logo { height: 24px; }
+  .brand-logo { height: 28px; }
 
   /* Submenu vira lista sempre visível, indentada, dentro do menu do celular */
   .nav-item { position: static; width: 100%; }
