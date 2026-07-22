@@ -61,13 +61,9 @@ body.home .hero img{
   background:var(--bg-soft);
   padding:var(--space-9) var(--pad-x);
 }
-.home-sobre-inner{
-  max-width:680px;
-  margin:0 auto;
-  text-align:center;
-}
+.home-sobre-inner,
 .home-repositorio-inner{
-  max-width:760px;
+  max-width:1000px;
   margin:0 auto;
   text-align:center;
 }
@@ -80,11 +76,15 @@ body.home .hero img{
   margin-bottom:var(--space-4);
 }
 .home-sobre h2{
-  font-size:clamp(30px, 4vw, 40px);
-  letter-spacing:-0.01em;
+  font-size:clamp(20px, 2.4vw, 32px);
+  letter-spacing:0.01em;
+  text-transform:uppercase;
+  white-space:nowrap;
   margin-bottom:var(--space-4);
 }
 .home-sobre p{
+  max-width:700px;
+  margin:0 auto;
   color:var(--ink-soft);
   font-size:18px;
   line-height:1.6;
@@ -108,7 +108,7 @@ body.home .hero img{
   flex-direction:column;
   gap:var(--space-3);
   margin:var(--space-5) auto 0;
-  max-width:640px;
+  max-width:900px;
   text-align:left;
 }
 .home-recent-work{
@@ -117,8 +117,9 @@ body.home .hero img{
   justify-content:space-between;
   gap:var(--space-4);
   background:var(--bg);
-  border-radius:var(--radius-md);
-  padding:18px 22px;
+  border-left:3px solid var(--accent);
+  border-radius:0 var(--radius-md) var(--radius-md) 0;
+  padding:18px 24px;
 }
 .home-recent-work-title{
   font-weight:700;
@@ -140,13 +141,11 @@ body.home .hero img{
 .home-recent-work-author svg{ flex:none; opacity:0.85; }
 .home-recent-work-year{
   flex:none;
-  font-size:13px;
+  font-size:15px;
   font-weight:700;
   color:var(--accent-hover);
-  background:var(--accent-soft);
-  padding:5px 12px;
-  border-radius:999px;
   white-space:nowrap;
+  margin-top:2px;
 }
 
 /* Rodapé */
