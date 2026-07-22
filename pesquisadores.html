@@ -38,7 +38,7 @@
         <h1>Quem faz o CEAMP</h1>
         <p class="subtitle">
           Conheça os coordenadores, pesquisadores em atividade e pesquisadores associados
-          que constroem a produção do grupo. 
+          que constroem a produção do grupo. Clique em alguém para ver a bio e os trabalhos no repositório.
         </p>
       </div>
     </section>
@@ -48,36 +48,11 @@
       <div class="people-block">
         <div class="people-header">
           <h2>Coordenação</h2>
-          <span class="count">03 pesquisadores</span>
+          <span class="count" id="coordenacao-count"></span>
         </div>
 
-        <div class="people-grid coord">
-          <article class="person">
-            <div class="person-photo">
-              <img src="img/pesquisadores/ivia-minelli.jpg" alt="Ivia Minelli" onerror="this.style.display='none'" />
-            </div>
-            <p class="person-role">Coordenadora</p>
-            <h3 class="person-name">Ivia Minelli</h3>
-            <a class="person-lattes" href="http://lattes.cnpq.br/2504619945377334" target="_blank" rel="noopener">Currículo Lattes <svg class="icon-external" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-          </article>
-
-          <article class="person">
-            <div class="person-photo">
-              <img src="img/pesquisadores/jose-alves-de-freitas-neto.jpg" alt="José Alves de Freitas Neto" onerror="this.style.display='none'" />
-            </div>
-            <p class="person-role">Coordenador</p>
-            <h3 class="person-name">José Alves de Freitas Neto</h3>
-            <a class="person-lattes" href="http://lattes.cnpq.br/6583846020363516" target="_blank" rel="noopener">Currículo Lattes <svg class="icon-external" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-          </article>
-
-          <article class="person">
-            <div class="person-photo">
-              <img src="img/pesquisadores/luiz-estevam-de-oliveira-fernandes.jpg" alt="Luiz Estevam de Oliveira Fernandes" onerror="this.style.display='none'" />
-            </div>
-            <p class="person-role">Coordenador</p>
-            <h3 class="person-name">Luiz Estevam de Oliveira Fernandes</h3>
-            <a class="person-lattes" href="http://lattes.cnpq.br/2093509678163801" target="_blank" rel="noopener">Currículo Lattes <svg class="icon-external" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-          </article>
+        <div class="people-grid coord" id="coordenacao-grid">
+          <!-- coordenação -->
         </div>
       </div>
 
@@ -85,11 +60,11 @@
       <div class="people-block">
         <div class="people-header">
           <h2>Pesquisadores</h2>
-          <span class="count">17 pesquisadores</span>
+          <span class="count" id="pesquisadores-count"></span>
         </div>
 
         <div class="people-grid" id="pesquisadores-grid">
-          <!-- 20 pesquisadores (placeholders) -->
+          <!-- pesquisadores -->
         </div>
       </div>
 
@@ -97,11 +72,11 @@
       <div class="people-block">
         <div class="people-header">
           <h2>Pesquisadores associados</h2>
-          <span class="count">06 pesquisadores</span>
+          <span class="count" id="associados-count"></span>
         </div>
 
         <div class="people-grid" id="associados-grid">
-          <!-- 20 associados (placeholders) -->
+          <!-- associados -->
         </div>
       </div>
     </section>
@@ -134,52 +109,209 @@
     </div>
   </footer>
 
+  <!-- Pop-up de perfil do pesquisador -->
+  <div class="person-modal" id="person-modal" hidden>
+    <div class="person-modal-overlay" data-close></div>
+    <div class="person-modal-panel" role="dialog" aria-modal="true" aria-labelledby="person-modal-name">
+      <button class="person-modal-close" type="button" aria-label="Fechar" data-close>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div class="person-modal-photo">
+        <img id="person-modal-img" src="" alt="" onerror="this.style.display='none'" />
+      </div>
+      <div class="person-modal-body">
+        <p class="person-modal-role" id="person-modal-role"></p>
+        <h3 class="person-modal-name" id="person-modal-name"></h3>
+        <a class="person-lattes" id="person-modal-lattes" href="#" target="_blank" rel="noopener">
+          Currículo Lattes
+          <svg class="icon-external" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+        <div class="person-modal-bio" id="person-modal-bio"></div>
+        <div class="person-modal-works" id="person-modal-works">
+          <p class="person-modal-works-title">Trabalhos no repositório</p>
+          <ul class="person-modal-works-list" id="person-modal-works-list"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="js/main.js"></script>
   <script>
-    // Placeholders para 20 pesquisadores e 20 associados.
-    // Substitua o array `pesquisadores` e `associados` pelos nomes reais,
-    // e coloque as fotos em img/pesquisadores/<slug>.jpg
+    // =====================================================================
+    //  PESQUISADORES — edite os arrays abaixo para adicionar, remover ou
+    //  alterar pessoas. Coloque as fotos em img/pesquisadores/<slug>.jpg
+    //
+    //  Campo "bio": texto livre com formação/mini-bio, mostrado no pop-up
+    //  que abre ao clicar na pessoa. Comece vazio ("") e preencha quando
+    //  quiser — sem bio, o pop-up mostra "Biografia em breve.".
+    //
+    //  Os trabalhos do Repositório (data/trabalhos.json) aparecem no
+    //  pop-up automaticamente, cruzando pelo nome do autor — não precisa
+    //  editar nada aqui pra isso, só manter o nome parecido em ambos os
+    //  lugares.
+    // =====================================================================
+    const coordenacao = [
+      { nome: 'Ivia Minelli', slug: 'ivia-minelli', papel: 'Coordenadora', lattes: 'http://lattes.cnpq.br/2504619945377334', bio: '' },
+      { nome: 'José Alves de Freitas Neto', slug: 'jose-alves-de-freitas-neto', papel: 'Coordenador', lattes: 'http://lattes.cnpq.br/6583846020363516', bio: '' },
+      { nome: 'Luiz Estevam de Oliveira Fernandes', slug: 'luiz-estevam-de-oliveira-fernandes', papel: 'Coordenador', lattes: 'http://lattes.cnpq.br/2093509678163801', bio: '' },
+    ];
+
     const pesquisadores = [
-      { nome: 'Ana Carolina Balbino', slug: 'ana-carolina-balbino', lattes: 'http://lattes.cnpq.br/0913493261449773' },
-      { nome: 'Catherine Hergert', slug: 'catherine-hergert', lattes: 'http://lattes.cnpq.br/3355448396720740' },
-      { nome: 'Clara Garcia', slug: 'clara-garcia', lattes: 'http://lattes.cnpq.br/6935139006330862' },
-      { nome: 'Daniel Vieira', slug: 'daniel-vieira', lattes: 'http://lattes.cnpq.br/3236078722858678' },
-      { nome: 'Dara Ramos', slug: 'dara-ramos', lattes: 'http://lattes.cnpq.br/0381321331451630' },
-      { nome: 'Fernanda Brenelli', slug: 'fernanda-brenelli', lattes: 'http://lattes.cnpq.br/9781424113655055' },
-      { nome: 'Gustavo Padilha', slug: 'gustavo-padilha', lattes: 'http://lattes.cnpq.br/2903312465843460' },
-      { nome: 'Laura Galassi', slug: 'laura-galassi', lattes: 'http://lattes.cnpq.br/5278288601454949' },
-      { nome: 'Laura Marostegan', slug: 'laura-marostegan', lattes: 'http://lattes.cnpq.br/6220346816034254' },
-      { nome: 'Lívia Mendes', slug: 'livia-mendes', lattes: 'http://lattes.cnpq.br/1296475213238854' },
-      { nome: 'Lucas Bueno', slug: 'lucas-bueno', lattes: 'http://lattes.cnpq.br/4746828147155673' },
-      { nome: 'Luiza Trevenzoli', slug: 'luiza-trevenzoli', lattes: 'http://lattes.cnpq.br/2176720285998705' },
-      { nome: 'Maria Clara Figueiredo', slug: 'maria-clara-figueiredo', lattes: 'http://lattes.cnpq.br/9442622981315444' },
-      { nome: 'Mariana Adami', slug: 'mariana-adami', lattes: 'http://lattes.cnpq.br/3383243816561582' },
-      { nome: 'Mariza Cardoso', slug: 'mariza-cardoso', lattes: 'http://lattes.cnpq.br/7387499815589247' },
-      { nome: 'Matheus Martins', slug: 'matheus-martins', lattes: 'http://lattes.cnpq.br/7281542833274446' },
-      { nome: 'Raquel Lanzoni', slug: 'raquel-lanzoni', lattes: 'http://lattes.cnpq.br/6360193269646810' },
+      { nome: 'Ana Carolina Balbino', slug: 'ana-carolina-balbino', lattes: 'http://lattes.cnpq.br/0913493261449773', bio: '' },
+      { nome: 'Catherine Hergert', slug: 'catherine-hergert', lattes: 'http://lattes.cnpq.br/3355448396720740', bio: '' },
+      { nome: 'Clara Garcia', slug: 'clara-garcia', lattes: 'http://lattes.cnpq.br/6935139006330862', bio: '' },
+      { nome: 'Daniel Vieira', slug: 'daniel-vieira', lattes: 'http://lattes.cnpq.br/3236078722858678', bio: '' },
+      { nome: 'Dara Ramos', slug: 'dara-ramos', lattes: 'http://lattes.cnpq.br/0381321331451630', bio: '' },
+      { nome: 'Fernanda Brenelli', slug: 'fernanda-brenelli', lattes: 'http://lattes.cnpq.br/9781424113655055', bio: '' },
+      { nome: 'Gustavo Padilha', slug: 'gustavo-padilha', lattes: 'http://lattes.cnpq.br/2903312465843460', bio: '' },
+      { nome: 'Laura Galassi', slug: 'laura-galassi', lattes: 'http://lattes.cnpq.br/5278288601454949', bio: '' },
+      { nome: 'Laura Marostegan', slug: 'laura-marostegan', lattes: 'http://lattes.cnpq.br/6220346816034254', bio: '' },
+      { nome: 'Lívia Mendes', slug: 'livia-mendes', lattes: 'http://lattes.cnpq.br/1296475213238854', bio: '' },
+      { nome: 'Lucas Bueno', slug: 'lucas-bueno', lattes: 'http://lattes.cnpq.br/4746828147155673', bio: '' },
+      { nome: 'Luiza Trevenzoli', slug: 'luiza-trevenzoli', lattes: 'http://lattes.cnpq.br/2176720285998705', bio: '' },
+      { nome: 'Maria Clara Figueiredo', slug: 'maria-clara-figueiredo', lattes: 'http://lattes.cnpq.br/9442622981315444', bio: '' },
+      { nome: 'Mariana Adami', slug: 'mariana-adami', lattes: 'http://lattes.cnpq.br/3383243816561582', bio: '' },
+      { nome: 'Mariza Cardoso', slug: 'mariza-cardoso', lattes: 'http://lattes.cnpq.br/7387499815589247', bio: '' },
+      { nome: 'Matheus Martins', slug: 'matheus-martins', lattes: 'http://lattes.cnpq.br/7281542833274446', bio: '' },
+      { nome: 'Raquel Lanzoni', slug: 'raquel-lanzoni', lattes: 'http://lattes.cnpq.br/6360193269646810', bio: '' },
     ];
 
     const associados = [
-      { nome: 'Breno Juz', slug: 'breno-juz', lattes: 'http://lattes.cnpq.br/4302047061574128' },
-      { nome: 'Gabriel Sordi', slug: 'gabriel-sordi', lattes: 'http://lattes.cnpq.br/8840923919185834' },
-      { nome: 'Gabriela Theodoro', slug: 'gabriela-theodoro', lattes: 'http://lattes.cnpq.br/8379391706150049' },
-      { nome: 'José Ferreira', slug: 'jose-ferreira', lattes: 'http://lattes.cnpq.br/7678938529408028' },
-      { nome: 'Rafael Pavani', slug: 'rafael-pavani', lattes: 'http://lattes.cnpq.br/2428550824791654' },
-      { nome: 'Júlio Matzenbacher Zampietro', slug: 'julio-matzenbacher-zampietro', lattes: 'http://lattes.cnpq.br/1135002694128703' },
+      { nome: 'Breno Juz', slug: 'breno-juz', lattes: 'http://lattes.cnpq.br/4302047061574128', bio: '' },
+      { nome: 'Gabriel Sordi', slug: 'gabriel-sordi', lattes: 'http://lattes.cnpq.br/8840923919185834', bio: '' },
+      { nome: 'Gabriela Theodoro', slug: 'gabriela-theodoro', lattes: 'http://lattes.cnpq.br/8379391706150049', bio: '' },
+      { nome: 'José Ferreira', slug: 'jose-ferreira', lattes: 'http://lattes.cnpq.br/7678938529408028', bio: '' },
+      { nome: 'Rafael Pavani', slug: 'rafael-pavani', lattes: 'http://lattes.cnpq.br/2428550824791654', bio: '' },
+      { nome: 'Júlio Matzenbacher Zampietro', slug: 'julio-matzenbacher-zampietro', lattes: 'http://lattes.cnpq.br/1135002694128703', bio: '' },
     ];
 
+    const pad2 = (n) => String(n).padStart(2, '0');
+
+    const escapeHtml = (str) => (str ?? '').toString()
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+
+    const isSafeUrl = (url) => {
+      if (!url) return false;
+      try {
+        const u = new URL(url, window.location.href);
+        return u.protocol === 'http:' || u.protocol === 'https:';
+      } catch {
+        return false;
+      }
+    };
+
+    const iconExternal = '<svg class="icon-external" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>';
+
     const renderPerson = (p) => `
-      <article class="person">
+      <article class="person" data-slug="${p.slug}" tabindex="0" role="button" aria-haspopup="dialog">
         <div class="person-photo">
-          <img src="img/pesquisadores/${p.slug}.jpg" alt="${p.nome}" onerror="this.style.display='none'" />
+          <img src="img/pesquisadores/${p.slug}.jpg" alt="${escapeHtml(p.nome)}" onerror="this.style.display='none'" />
         </div>
-        <h3 class="person-name">${p.nome}</h3>
-        <a class="person-lattes" href="${p.lattes}" target="_blank" rel="noopener">Currículo Lattes <svg class="icon-external" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        ${p.papel ? `<p class="person-role">${escapeHtml(p.papel)}</p>` : ''}
+        <h3 class="person-name">${escapeHtml(p.nome)}</h3>
+        <span class="person-lattes">Ver perfil ${iconExternal}</span>
       </article>
     `;
 
+    document.getElementById('coordenacao-grid').innerHTML = coordenacao.map(renderPerson).join('');
     document.getElementById('pesquisadores-grid').innerHTML = pesquisadores.map(renderPerson).join('');
     document.getElementById('associados-grid').innerHTML = associados.map(renderPerson).join('');
+
+    document.getElementById('coordenacao-count').textContent = `${pad2(coordenacao.length)} pesquisadores`;
+    document.getElementById('pesquisadores-count').textContent = `${pad2(pesquisadores.length)} pesquisadores`;
+    document.getElementById('associados-count').textContent = `${pad2(associados.length)} pesquisadores`;
+
+    // ---- Cruzamento com o Repositório (por nome do autor, aproximado) ----
+    const normalize = (str) =>
+      (str || '').toString().normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
+
+    let trabalhos = [];
+    fetch('data/trabalhos.json')
+      .then((r) => (r.ok ? r.json() : []))
+      .then((data) => { trabalhos = Array.isArray(data) ? data : []; })
+      .catch(() => { trabalhos = []; });
+
+    const worksFor = (nome) => {
+      const n = normalize(nome);
+      if (!n) return [];
+      return trabalhos.filter((w) => {
+        const a = normalize(w.autor);
+        return a && (a === n || a.includes(n) || n.includes(a));
+      });
+    };
+
+    // ---- Pop-up ----
+    const personBySlug = {};
+    [...coordenacao, ...pesquisadores, ...associados].forEach((p) => { personBySlug[p.slug] = p; });
+
+    const modal = document.getElementById('person-modal');
+    const modalImg = document.getElementById('person-modal-img');
+    const modalRole = document.getElementById('person-modal-role');
+    const modalName = document.getElementById('person-modal-name');
+    const modalLattes = document.getElementById('person-modal-lattes');
+    const modalBio = document.getElementById('person-modal-bio');
+    const modalWorks = document.getElementById('person-modal-works');
+    const modalWorksList = document.getElementById('person-modal-works-list');
+    let lastFocused = null;
+
+    const openModal = (slug) => {
+      const p = personBySlug[slug];
+      if (!p) return;
+
+      modalImg.style.display = '';
+      modalImg.src = `img/pesquisadores/${p.slug}.jpg`;
+      modalImg.alt = p.nome;
+      modalName.textContent = p.nome;
+      modalRole.textContent = p.papel || '';
+      modalRole.style.display = p.papel ? '' : 'none';
+      modalLattes.href = p.lattes || '#';
+      modalBio.textContent = p.bio && p.bio.trim() ? p.bio : 'Biografia em breve.';
+
+      const works = worksFor(p.nome);
+      if (works.length) {
+        modalWorksList.innerHTML = works.map((w) => {
+          const link = isSafeUrl(w.arquivo)
+            ? `<a href="${escapeHtml(w.arquivo)}" target="_blank" rel="noopener">${escapeHtml(w.titulo)}</a>`
+            : `<span>${escapeHtml(w.titulo)}</span>`;
+          const meta = [w.tipo, w.ano].filter(Boolean).join(' · ');
+          return `<li>${link}<span class="person-modal-work-meta">${escapeHtml(meta)}</span></li>`;
+        }).join('');
+        modalWorks.style.display = '';
+      } else {
+        modalWorksList.innerHTML = '';
+        modalWorks.style.display = 'none';
+      }
+
+      lastFocused = document.activeElement;
+      modal.hidden = false;
+      document.body.classList.add('modal-open');
+      modal.querySelector('.person-modal-close').focus();
+    };
+
+    const closeModal = () => {
+      modal.hidden = true;
+      document.body.classList.remove('modal-open');
+      if (lastFocused) lastFocused.focus();
+    };
+
+    document.querySelectorAll('.person').forEach((el) => {
+      el.addEventListener('click', () => openModal(el.dataset.slug));
+      el.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openModal(el.dataset.slug);
+        }
+      });
+    });
+
+    modal.querySelectorAll('[data-close]').forEach((el) => el.addEventListener('click', closeModal));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !modal.hidden) closeModal();
+    });
   </script>
 </body>
 </html>
