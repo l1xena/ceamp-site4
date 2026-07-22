@@ -169,7 +169,7 @@
       { nome: 'Lívia Mendes', slug: 'livia-mendes', lattes: 'http://lattes.cnpq.br/1296475213238854', bio: '' },
       { nome: 'Lucas Bueno', slug: 'lucas-bueno', lattes: 'http://lattes.cnpq.br/4746828147155673', bio: '' },
       { nome: 'Luiza Trevenzoli', slug: 'luiza-trevenzoli', lattes: 'http://lattes.cnpq.br/2176720285998705', bio: '' },
-      { nome: 'Maria Clara Figueiredo', slug: 'maria-clara-figueiredo', lattes: 'http://lattes.cnpq.br/9442622981315444', bio: '' },
+      { nome: 'Maria Clara Figueiredo', slug: 'maria-clara-figueiredo', lattes: 'http://lattes.cnpq.br/9442622981315444', bio: '', apelidos: ['Maria Clara da Silveira'] },
       { nome: 'Mariana Adami', slug: 'mariana-adami', lattes: 'http://lattes.cnpq.br/3383243816561582', bio: '' },
       { nome: 'Mariza Cardoso', slug: 'mariza-cardoso', lattes: 'http://lattes.cnpq.br/7387499815589247', bio: '' },
       { nome: 'Matheus Martins', slug: 'matheus-martins', lattes: 'http://lattes.cnpq.br/7281542833274446', bio: '' },
@@ -235,12 +235,14 @@
       .then((data) => { trabalhos = Array.isArray(data) ? data : []; })
       .catch(() => { trabalhos = []; });
 
-    const worksFor = (nome) => {
-      const n = normalize(nome);
-      if (!n) return [];
+    // "apelidos" (opcional): outras formas do nome do autor no Repositório,
+    // pra quando não bate por aproximação (ex.: sobrenome de casamento).
+    const worksFor = (p) => {
+      const names = [p.nome, ...(p.apelidos || [])].map(normalize).filter(Boolean);
+      if (!names.length) return [];
       return trabalhos.filter((w) => {
         const a = normalize(w.autor);
-        return a && (a === n || a.includes(n) || n.includes(a));
+        return a && names.some((n) => a === n || a.includes(n) || n.includes(a));
       });
     };
 
@@ -271,7 +273,7 @@
       modalLattes.href = p.lattes || '#';
       modalBio.textContent = p.bio && p.bio.trim() ? p.bio : 'Biografia em breve.';
 
-      const works = worksFor(p.nome);
+      const works = worksFor(p);
       if (works.length) {
         modalWorksList.innerHTML = works.map((w) => {
           const link = isSafeUrl(w.arquivo)
