@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Redes e parceiros do Centro de Estudos Americanos da Unicamp (CEAMP)." />
+  <title>Redes e Parceiros · CEAMP</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/theme.css" />
+</head>
+<body class="page-redes-parceiros">
+  <header class="site-header">
+    <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav">
+      <a href="index.html">Início</a>
+      <a href="historia.html">Nossa história</a>
+      <div class="nav-item">
+        <a href="pesquisadores.html" class="active">Pesquisadores</a>
+        <div class="nav-dropdown">
+          <a href="pesquisadores.html">Pesquisadores</a>
+          <a href="redes-parceiros.html" class="active">Redes e Parceiros</a>
+        </div>
+      </div>
+      <a href="repositorio.html">Repositório</a>
+      <a href="contato.html">Contato</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="page-hero-inner">
+        <p class="eyebrow">02 · Redes e Parceiros</p>
+        <h1>Redes e parceiros do CEAMP</h1>
+        <p class="subtitle">
+          Pesquisadores de outras instituições que colaboram com o centro, e as redes
+          e grupos de pesquisa parceiros do CEAMP.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <!-- PARCEIROS -->
+      <div class="people-block">
+        <div class="people-header">
+          <h2>Parceiros</h2>
+          <span class="count" id="parceiros-count"></span>
+        </div>
+
+        <div class="people-grid" id="parceiros-grid">
+          <!-- pesquisadores parceiros (placeholders) -->
+        </div>
+      </div>
+
+      <!-- REDES -->
+      <div class="people-block">
+        <div class="people-header">
+          <h2>Redes</h2>
+          <span class="count" id="redes-count"></span>
+        </div>
+
+        <div class="networks-list" id="redes-list">
+          <!-- redes/grupos de pesquisa parceiros (placeholders) -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <span class="brand-small">Centro de Estudos Americanos da Unicamp</span>
+      <span>Todos os direitos reservados · <span id="year"></span></span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // =====================================================================
+    //  PLACEHOLDERS — substitua pelos parceiros e redes reais.
+    //  Fotos de parceiros: img/parceiros/<slug>.jpg
+    //  Logos de redes: img/redes/<slug>.jpg
+    // =====================================================================
+    const parceiros = [
+      {
+        nome: 'Nome do Parceiro',
+        slug: 'parceiro-exemplo-1',
+        universidade: 'Universidade Exemplo',
+        lattes: 'http://lattes.cnpq.br/0000000000000000',
+      },
+      {
+        nome: 'Nome do Parceiro',
+        slug: 'parceiro-exemplo-2',
+        universidade: 'Universidade Exemplo',
+        lattes: 'http://lattes.cnpq.br/0000000000000000',
+      },
+      {
+        nome: 'Nome do Parceiro',
+        slug: 'parceiro-exemplo-3',
+        universidade: 'Universidade Exemplo',
+        lattes: 'http://lattes.cnpq.br/0000000000000000',
+      },
+    ];
+
+    const redes = [
+      {
+        nome: 'Nome da Rede ou Grupo de Pesquisa',
+        slug: 'rede-exemplo-1',
+        descricao: 'Breve descrição do que é essa rede ou grupo de pesquisa parceiro e qual a relação com o CEAMP.',
+        link: 'https://exemplo.com',
+      },
+      {
+        nome: 'Nome da Rede ou Grupo de Pesquisa',
+        slug: 'rede-exemplo-2',
+        descricao: 'Breve descrição do que é essa rede ou grupo de pesquisa parceiro e qual a relação com o CEAMP.',
+        link: 'https://exemplo.com',
+      },
+      {
+        nome: 'Nome da Rede ou Grupo de Pesquisa',
+        slug: 'rede-exemplo-3',
+        descricao: 'Breve descrição do que é essa rede ou grupo de pesquisa parceiro e qual a relação com o CEAMP.',
+        link: 'https://exemplo.com',
+      },
+    ];
+
+    const pad2 = (n) => String(n).padStart(2, '0');
+
+    const renderParceiro = (p) => `
+      <article class="person">
+        <div class="person-photo">
+          <img src="img/parceiros/${p.slug}.jpg" alt="${p.nome}" onerror="this.style.display='none'" />
+        </div>
+        <h3 class="person-name">${p.nome}</h3>
+        <p class="person-university">${p.universidade}</p>
+        <a class="person-lattes" href="${p.lattes}" target="_blank" rel="noopener">Currículo Lattes ↗</a>
+      </article>
+    `;
+
+    const renderRede = (r) => `
+      <article class="network-card">
+        <div class="network-logo">
+          <img src="img/redes/${r.slug}.jpg" alt="${r.nome}" onerror="this.style.display='none'" />
+        </div>
+        <div class="network-content">
+          <h3 class="network-name">${r.nome}</h3>
+          <p class="network-description">${r.descricao}</p>
+          <a class="network-link" href="${r.link}" target="_blank" rel="noopener">Visitar site ↗</a>
+        </div>
+      </article>
+    `;
+
+    document.getElementById('parceiros-grid').innerHTML = parceiros.map(renderParceiro).join('');
+    document.getElementById('redes-list').innerHTML = redes.map(renderRede).join('');
+    document.getElementById('parceiros-count').textContent = `${pad2(parceiros.length)} parceiros`;
+    document.getElementById('redes-count').textContent = `${pad2(redes.length)} redes`;
+  </script>
+</body>
+</html>
