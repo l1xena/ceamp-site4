@@ -1,7 +1,7 @@
 /* =========================================================
    CEAMP — tema do menu e rodapé (todas as páginas)
    Carregue este arquivo DEPOIS do style.css em todas as páginas.
-   Deixa o menu e o rodapé laranja. Fonte: Helvetica (padrão do site).
+   Deixa o menu e o rodapé laranja — a cor principal da marca.
    ========================================================= */
 
 :root{
@@ -9,16 +9,24 @@
   --on-header:#111111;   /* texto sobre o laranja */
 }
 
-/* ---- Menu laranja, alinhado à direita ---- */
+/* ---- Menu laranja ---- */
 .site-header,
 .site-header.solid{
   background:var(--header);
   color:var(--on-header);
-  justify-content:flex-end;
   box-shadow:none;
   backdrop-filter:none;
   -webkit-backdrop-filter:none;
+  transition: box-shadow var(--transition), height var(--transition);
 }
+
+/* Sombra sutil quando a página rola, pra dar profundidade ao menu fixo */
+.site-header.scrolled{
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.14);
+}
+
+.brand{ color:var(--on-header); }
+
 .nav a::after{ background:#fff; }
 .nav a:hover,
 .nav a.active,
@@ -46,6 +54,8 @@
 .footer-inner{ color:var(--on-header); }
 .footer-inner .muted{ opacity:0.85; }
 .footer-inner .brand-small{ color:var(--on-header); }
+.footer-tagline{ color:var(--on-header); opacity:0.8; }
+.footer-bottom{ color:var(--on-header); }
 
 /* ---- Celular: painel lateral do menu também laranja ---- */
 @media (max-width:720px){
@@ -55,24 +65,23 @@
   .nav a:hover,
   .nav a.active{ color:#fff; }
 }
-/* Menu e rodapé com a mesma altura em todas as páginas */
+/* Menu com a mesma altura em todas as páginas (encolhe um pouco ao rolar) */
 .site-header,
 .site-header.solid {
   height: 76px;
   padding-top: 0;
   padding-bottom: 0;
 }
+.site-header.scrolled,
+.site-header.scrolled.solid {
+  height: 66px;
+}
 .site-footer {
   padding-top: 24px;
   padding-bottom: 24px;
 }
-/* Só no celular: rodapé centralizado + rótulo "Menu" no botão */
+/* Só no celular: rótulo "Menu" no botão hambúrguer */
 @media (max-width: 720px) {
-  .footer-inner {
-    justify-content: center;
-    text-align: center;
-  }
-
   .nav-toggle { position: relative; }
   .nav-toggle::after {
     content: "Menu";

@@ -85,7 +85,7 @@
         .filter(Boolean)
         .map((t) => `<span class="tag">${escapeHtml(t)}</span>`).join('');
       const link = isSafeUrl(w.arquivo)
-        ? `<a class="work-download" href="${escapeHtml(w.arquivo)}" target="_blank" rel="noopener">Baixar PDF ↓</a>`
+        ? `<a class="work-download" href="${escapeHtml(w.arquivo)}" target="_blank" rel="noopener">Baixar PDF <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><polyline points="7 11 12 16 17 11"/><path d="M5 20h14"/></svg></a>`
         : `<span class="tag">Indisponível</span>`;
       return `
         <tr>

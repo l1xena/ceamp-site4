@@ -4,6 +4,7 @@
 
   const updateHeader = () => {
     if (!header) return;
+    header.classList.toggle('scrolled', window.scrollY > 10);
     if (!isHome) {
       header.classList.add('solid');
       return;
