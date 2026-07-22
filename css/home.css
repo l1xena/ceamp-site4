@@ -79,12 +79,6 @@ body.home .hero img{
   font-weight:700;
   margin-bottom:var(--space-4);
 }
-.home-sobre h2{
-  font-size:clamp(24px, 3vw, 30px);
-  letter-spacing:-0.01em;
-  white-space:nowrap;
-  margin-bottom:var(--space-6);
-}
 .home-sobre p{
   color:var(--ink-soft);
   font-size:18px;
