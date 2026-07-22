@@ -275,10 +275,6 @@ a { color: inherit; text-decoration: none; }
   max-width: 720px;
 }
 
-/* Pesquisadores: cabeçalho e primeira seção mais próximos um do outro */
-.page-pesquisadores .page-hero { padding-bottom: 24px; }
-.page-pesquisadores .page-hero + .section { padding-top: 40px; }
-
 /* ---------- Sections ---------- */
 main { min-height: 60vh; }
 
