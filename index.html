@@ -38,6 +38,29 @@
       <img src="img/hero-desktop.jpg" alt="Centro de Estudos Americanos · IFCH · Unicamp" />
     </picture>
   </section>
+
+  <!-- Sobre + Repositório recente (só desktop; no celular seguem os cartões de atalho abaixo) -->
+  <section class="home-sobre">
+    <div class="home-sobre-inner">
+      <p class="home-section-label">Sobre</p>
+      <h2>O CEAMP em poucas palavras</h2>
+      <p>
+        Grupo de pesquisa do Instituto de Filosofia e Ciências Humanas da Unicamp
+        dedicado à história das Américas desde 2006, reunindo coordenação,
+        pesquisadores e pesquisadores associados.
+      </p>
+      <a href="historia.html" class="home-section-link">Nossa história →</a>
+    </div>
+  </section>
+
+  <section class="home-repositorio-recente">
+    <div class="home-repositorio-inner">
+      <p class="home-section-label">Repositório · trabalhos recentes</p>
+      <ul class="home-recent-works" id="home-recent-works"></ul>
+      <a href="repositorio.html" class="home-section-link">Ver repositório completo →</a>
+    </div>
+  </section>
+
 <!-- Atalhos (aparecem só no celular) -->
 <section class="home-cards">
   <a class="home-card" href="historia.html">
@@ -86,5 +109,58 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    // Repositório recente na home: pega os trabalhos com maior "ano" de
+    // publicação em data/trabalhos.json. Só é usado no desktop (a lista
+    // fica escondida por CSS no celular), mas o fetch roda sempre — é
+    // barato e mantém a lógica num só lugar.
+    (() => {
+      const list = document.getElementById('home-recent-works');
+      if (!list) return;
+
+      const escapeHtml = (str) => (str ?? '').toString()
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+
+      const isSafeUrl = (url) => {
+        if (!url) return false;
+        try {
+          const u = new URL(url, window.location.href);
+          return u.protocol === 'http:' || u.protocol === 'https:';
+        } catch {
+          return false;
+        }
+      };
+
+      fetch('data/trabalhos.json')
+        .then((r) => (r.ok ? r.json() : []))
+        .then((data) => {
+          const trabalhos = Array.isArray(data) ? data : [];
+          const recentes = trabalhos
+            .filter((w) => w && w.titulo && Number.isFinite(Number(w.ano)))
+            .sort((a, b) => Number(b.ano) - Number(a.ano))
+            .slice(0, 3);
+
+          list.innerHTML = recentes.map((w) => {
+            const titleHtml = isSafeUrl(w.arquivo)
+              ? `<a href="${escapeHtml(w.arquivo)}" target="_blank" rel="noopener">${escapeHtml(w.titulo)}</a>`
+              : escapeHtml(w.titulo);
+            return `
+              <li class="home-recent-work">
+                <div>
+                  <p class="home-recent-work-title">${titleHtml}</p>
+                  ${w.autor ? `<p class="home-recent-work-author">${escapeHtml(w.autor)}</p>` : ''}
+                </div>
+                <span class="home-recent-work-year">${escapeHtml(w.ano)}</span>
+              </li>
+            `;
+          }).join('');
+        })
+        .catch(() => {});
+    })();
+  </script>
 </body>
 </html>
