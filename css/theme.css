@@ -25,6 +25,18 @@
 .site-header.solid .nav a:hover,
 .site-header.solid .nav a.active{ color:#fff; }
 
+/* Submenu (Pesquisadores > Redes e Parceiros): fundo claro, então o
+   texto continua escuro (e laranja no hover/ativo), não branco. */
+@media (min-width: 721px) {
+  .site-header .nav-dropdown a,
+  .site-header.solid .nav-dropdown a{ color:var(--on-header); }
+
+  .site-header .nav-dropdown a:hover,
+  .site-header .nav-dropdown a.active,
+  .site-header.solid .nav-dropdown a:hover,
+  .site-header.solid .nav-dropdown a.active{ color:var(--header); }
+}
+
 /* ---- Rodapé laranja ---- */
 .site-footer{
   background:var(--header);
