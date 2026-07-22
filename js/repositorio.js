@@ -55,10 +55,10 @@
     if (state.seculo && w.seculo !== state.seculo) return false;
     if (state.periodo && w.periodo !== state.periodo) return false;
     if (state.tipo && w.tipo !== state.tipo) return false;
-    if (state.tematica && w.tematica !== state.tematica) return false;
+    if (state.tematica && !w.tematica.includes(state.tematica)) return false;
     if (state.query) {
       const haystack = normalize(
-        [w.titulo, w.autor, w.ano, w.pais, w.tipo, w.periodo, w.seculo, w.tematica].join(' ')
+        [w.titulo, w.autor, w.ano, w.pais, w.tipo, w.periodo, w.seculo, ...w.tematica].join(' ')
       );
       if (!haystack.includes(normalize(state.query))) return false;
     }
@@ -81,7 +81,7 @@
     }
 
     tbody.innerHTML = filtered.map((w) => {
-      const tags = [w.pais, w.seculo ? `Séc. ${w.seculo}` : '', w.periodo]
+      const tags = [w.pais, w.seculo ? `Séc. ${w.seculo}` : '', w.periodo, ...w.tematica]
         .filter(Boolean)
         .map((t) => `<span class="tag">${escapeHtml(t)}</span>`).join('');
       const link = isSafeUrl(w.arquivo)
@@ -122,7 +122,7 @@
   };
 
   const populateTematicas = () => {
-    const tematicas = [...new Set(state.all.map((w) => w.tematica).filter(Boolean))].sort();
+    const tematicas = [...new Set(state.all.flatMap((w) => w.tematica))].sort();
     populateSelect(selTematica, tematicas, 'Todas as temáticas');
   };
 
@@ -131,8 +131,15 @@
     populateSelect(selPais, paises, 'Todas as regiões');
   };
 
+  // Aceita tanto o formato antigo (texto único) quanto o novo (lista), para não quebrar dados já existentes.
+  const normalizeTematica = (w) => {
+    if (Array.isArray(w.tematica)) { w.tematica = w.tematica.filter(Boolean); }
+    else { w.tematica = w.tematica ? [w.tematica] : []; }
+  };
+
   const boot = (data) => {
     state.all = Array.isArray(data) ? data : [];
+    state.all.forEach(normalizeTematica);
     populatePaises();
     populateTipos();
     populateTematicas();
