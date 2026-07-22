@@ -61,9 +61,13 @@ body.home .hero img{
   background:var(--bg-soft);
   padding:var(--space-9) var(--pad-x);
 }
-.home-sobre-inner,
+.home-sobre-inner{
+  max-width:680px;
+  margin:0 auto;
+  text-align:center;
+}
 .home-repositorio-inner{
-  max-width:1000px;
+  max-width:760px;
   margin:0 auto;
   text-align:center;
 }
@@ -76,15 +80,12 @@ body.home .hero img{
   margin-bottom:var(--space-4);
 }
 .home-sobre h2{
-  font-size:clamp(20px, 2.4vw, 32px);
-  letter-spacing:0.01em;
-  text-transform:uppercase;
+  font-size:clamp(24px, 3vw, 30px);
+  letter-spacing:-0.01em;
   white-space:nowrap;
-  margin-bottom:var(--space-4);
+  margin-bottom:var(--space-6);
 }
 .home-sobre p{
-  max-width:700px;
-  margin:0 auto;
   color:var(--ink-soft);
   font-size:18px;
   line-height:1.6;
@@ -108,7 +109,6 @@ body.home .hero img{
   flex-direction:column;
   gap:var(--space-3);
   margin:var(--space-5) auto 0;
-  max-width:900px;
   text-align:left;
 }
 .home-recent-work{
