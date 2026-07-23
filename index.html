@@ -42,16 +42,33 @@
   <!-- Sobre + Repositório recente (só desktop; no celular seguem os cartões de atalho abaixo) -->
   <section class="home-sobre">
     <div class="home-sobre-inner">
-      <p class="home-section-label">Sobre</p>
-      <p>
-        O CEAMP é um centro de pesquisa do Instituto de Filosofia e Ciências
-        Humanas da Unicamp dedicado aos estudos sobre a história da América
-        Latina. Desde o final da década de 1980, reúne pesquisadores que
-        desenvolvem investigações sobre diferentes temas e períodos da
-        história latino-americana. Neste espaço, você pode conhecer nossa
-        história, nossos pesquisadores e nossa produção acadêmica.
-      </p>
-      <a href="historia.html" class="home-section-link">Nossa história →</a>
+      <div class="home-sobre-text">
+        <p class="home-section-label">Sobre</p>
+        <p>
+          O CEAMP é um centro de pesquisa do Instituto de Filosofia e Ciências
+          Humanas da Unicamp dedicado aos estudos sobre a história da América
+          Latina. Desde o final da década de 1980, reúne pesquisadores que
+          desenvolvem investigações sobre diferentes temas e períodos da
+          história latino-americana. Neste espaço, você pode conhecer nossa
+          história, nossos pesquisadores e nossa produção acadêmica.
+        </p>
+        <a href="historia.html" class="home-section-link">Nossa história →</a>
+      </div>
+
+      <div class="home-sobre-divider" aria-hidden="true"></div>
+
+      <div class="home-sobre-carousel">
+        <div class="home-carousel-frame">
+          <img src="img/carrossel-home/foto-1.jpg" alt="Pesquisadores do CEAMP reunidos" class="home-carousel-slide is-active" />
+          <img src="img/carrossel-home/foto-2.jpg" alt="Pesquisadores do CEAMP reunidos" class="home-carousel-slide" />
+          <img src="img/carrossel-home/foto-3.jpg" alt="Pesquisadores do CEAMP reunidos" class="home-carousel-slide" />
+        </div>
+        <div class="home-carousel-dots" aria-hidden="true">
+          <span class="home-carousel-dot is-active"></span>
+          <span class="home-carousel-dot"></span>
+          <span class="home-carousel-dot"></span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -111,6 +128,24 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    // Carrossel de fotos do "Sobre": troca sozinho a cada poucos segundos
+    // (fade simples entre as imagens, sem setas/botões).
+    (() => {
+      const slides = document.querySelectorAll('.home-carousel-slide');
+      const dots = document.querySelectorAll('.home-carousel-dot');
+      if (slides.length < 2) return;
+
+      let current = 0;
+      setInterval(() => {
+        slides[current].classList.remove('is-active');
+        dots[current]?.classList.remove('is-active');
+        current = (current + 1) % slides.length;
+        slides[current].classList.add('is-active');
+        dots[current]?.classList.add('is-active');
+      }, 4500);
+    })();
+  </script>
   <script>
     // Repositório recente na home: pega os trabalhos com maior "ano" de
     // publicação em data/trabalhos.json. Só é usado no desktop (a lista
