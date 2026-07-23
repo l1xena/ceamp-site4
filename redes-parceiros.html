@@ -97,29 +97,25 @@
   <script src="js/main.js"></script>
   <script>
     // =====================================================================
-    //  PLACEHOLDERS — substitua pelos parceiros e redes reais.
-    //  Fotos de parceiros: img/parceiros/<slug>.jpg
+    //  PARCEIROS — pesquisadores de outras instituições.
+    //  Cada pessoa é { nome, cargo, universidade, lattes }. Sem foto: o
+    //  card mostra só nome, "cargo • universidade" e o link do Lattes.
     //  Logos de redes: img/redes/<slug>.jpg
     // =====================================================================
     const parceiros = [
-      {
-        nome: 'Nome do Parceiro',
-        slug: 'parceiro-exemplo-1',
-        universidade: 'Universidade Exemplo',
-        lattes: 'http://lattes.cnpq.br/0000000000000000',
-      },
-      {
-        nome: 'Nome do Parceiro',
-        slug: 'parceiro-exemplo-2',
-        universidade: 'Universidade Exemplo',
-        lattes: 'http://lattes.cnpq.br/0000000000000000',
-      },
-      {
-        nome: 'Nome do Parceiro',
-        slug: 'parceiro-exemplo-3',
-        universidade: 'Universidade Exemplo',
-        lattes: 'http://lattes.cnpq.br/0000000000000000',
-      },
+      { nome: 'Julia Kumpera', cargo: 'Doutoranda', universidade: 'UFF', lattes: 'http://lattes.cnpq.br/0404856445929732' },
+      { nome: 'Caio Pedrosa da Silva', cargo: 'Docente', universidade: 'UEL', lattes: 'http://lattes.cnpq.br/5949962502010701' },
+      { nome: 'Paulo Renato da Silva', cargo: 'Docente', universidade: 'UNILA', lattes: 'http://lattes.cnpq.br/8338759442804931' },
+      { nome: 'Monica Brincalepe Campo', cargo: 'Docente', universidade: 'UFU', lattes: 'http://lattes.cnpq.br/0905245325390054' },
+      { nome: 'Luís Guilherme Kalil', cargo: 'Docente', universidade: 'UFRRJ', lattes: 'http://lattes.cnpq.br/2638477460089622' },
+      { nome: 'Anderson Roberti Reis', cargo: 'Docente', universidade: 'UFMT', lattes: 'http://lattes.cnpq.br/3578387564218537' },
+      { nome: 'Flávia Galli Tatsch', cargo: 'Docente', universidade: 'Unifesp', lattes: 'http://lattes.cnpq.br/0478383494161646' },
+      { nome: 'Felipe de Paula Góis Vieira', cargo: 'Docente', universidade: 'IFSP - Capivari', lattes: 'http://lattes.cnpq.br/9927777419005902' },
+      { nome: 'Marcos Oliveira Amorim Tolentino', cargo: 'Pesquisador', universidade: 'Memorial da Resistência - SP', lattes: 'http://lattes.cnpq.br/3852465852103525' },
+      { nome: 'Natália Ayo Schmiedecke', cargo: 'Pesquisadora', universidade: 'Universidade de Hamburgo', lattes: 'http://lattes.cnpq.br/0770326864184529' },
+      { nome: 'Carolina Amaral de Aguiar', cargo: 'Docente', universidade: 'IRI - USP', lattes: 'http://lattes.cnpq.br/9978637833496783' },
+      { nome: 'Fabio Feltrin', cargo: 'Docente', universidade: 'UFPR', lattes: 'http://lattes.cnpq.br/3031724708203617' },
+      { nome: 'Kleber Amancio', cargo: 'Docente', universidade: 'UFRB', lattes: 'http://lattes.cnpq.br/9694090488535381' },
     ];
 
     const redes = [
@@ -146,12 +142,9 @@
     const pad2 = (n) => String(n).padStart(2, '0');
 
     const renderParceiro = (p) => `
-      <article class="person">
-        <div class="person-photo">
-          <img src="img/parceiros/${p.slug}.jpg" alt="${p.nome}" onerror="this.style.display='none'" />
-        </div>
+      <article class="person person-no-photo">
         <h3 class="person-name">${p.nome}</h3>
-        <p class="person-university">${p.universidade}</p>
+        <p class="person-university">${[p.cargo, p.universidade].filter(Boolean).join(' • ')}</p>
         <a class="person-lattes" href="${p.lattes}" target="_blank" rel="noopener">Currículo Lattes <svg class="icon-external" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
       </article>
     `;
