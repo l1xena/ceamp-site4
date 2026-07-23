@@ -206,7 +206,7 @@ body.home .site-footer{
 body.home .footer-inner{ max-width:none; font-size:13px; letter-spacing:0.06em; }
 /* Rodapé da home usa o mesmo tamanho do logo do cabeçalho (as outras
    páginas usam o logo maior definido em style.css). */
-body.home .footer-logos img{ height:34px; }
+body.home .footer-logos img{ height:40px; }
 
 /* Celular */
 @media (max-width:720px){
