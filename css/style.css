@@ -329,30 +329,29 @@ p.lead { font-size: 19px; color: var(--ink); }
 
 /* ---------- História (page 2) ---------- */
 .historia-grid {
-  max-width: 860px;
-  margin: 0 auto;
-}
-
-/* Contém as fotos flutuantes (ver .historia-inline-photo abaixo) —
-   sem isso o float "vaza" pra fora da coluna de texto. */
-.historia-text {
-  display: flow-root;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: var(--space-8);
+  align-items: start;
 }
 
 .historia-text p { font-size: 17px; }
 
-/* Fotos intercaladas no texto — uma depois do 2º parágrafo, outra
-   depois do último (ver marcação no historia.html). Retrato (3:4).
-   No celular ficam centralizadas, em bloco, entre os parágrafos. A
-   partir de telas médias (ver responsivo) flutuam à direita e o
-   texto contorna, estilo revista — evita a coluna estreita sobrando
-   com espaço em branco do lado numa tela larga. */
-.historia-inline-photo {
-  max-width: 320px;
-  margin: var(--space-6) auto;
+/* Coluna de fotos ao lado do texto (desktop). Retrato (3:4) — a foto
+   original é retrato, então esse box evita o corte pesado que um box
+   4/3 (paisagem) dava. */
+.historia-images {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  align-content: start;
 }
 
-.historia-inline-photo img {
+.historia-images figure {
+  position: relative;
+}
+
+.historia-images img {
   width: 100%;
   aspect-ratio: 3 / 4;
   object-fit: cover;
@@ -361,23 +360,20 @@ p.lead { font-size: 19px; color: var(--ink); }
   transition: transform var(--transition-slow);
 }
 
-.historia-inline-photo:hover img { transform: scale(1.015); }
+.historia-images figure:hover img { transform: scale(1.015); }
 
-.historia-inline-photo figcaption {
+.historia-images figcaption {
   font-size: 12px;
   color: var(--ink-muted);
   margin-top: var(--space-2);
   letter-spacing: 0.02em;
-  text-align: center;
 }
 
-@media (min-width: 640px) {
-  .historia-inline-photo {
-    float: right;
-    clear: right;
-    max-width: 300px;
-    margin: 4px 0 20px var(--space-6);
-  }
+/* Fotos intercaladas no texto — só aparecem no mobile (ver
+   responsivo). No desktop o texto usa a coluna de fotos ao lado
+   (.historia-images) e essas ficam escondidas. */
+.historia-inline-photo {
+  display: none;
 }
 
 .timeline {
@@ -1092,9 +1088,37 @@ body.modal-open { overflow: hidden; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
+  .historia-grid,
   .contact-grid {
     grid-template-columns: 1fr;
     gap: var(--space-6);
+  }
+
+  /* Nessa largura a coluna de fotos ao lado do texto vira fotos
+     intercaladas no meio do texto (ver marcação no historia.html):
+     uma depois do 2º parágrafo, outra depois do último. */
+  .historia-images { display: none; }
+
+  .historia-inline-photo {
+    display: block;
+    max-width: 320px;
+    margin: var(--space-6) auto;
+  }
+
+  .historia-inline-photo img {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    background: var(--bg-soft);
+    border-radius: var(--radius-md);
+  }
+
+  .historia-inline-photo figcaption {
+    font-size: 12px;
+    color: var(--ink-muted);
+    margin-top: var(--space-2);
+    letter-spacing: 0.02em;
+    text-align: center;
   }
 
   .people-grid { grid-template-columns: repeat(2, 1fr); }
