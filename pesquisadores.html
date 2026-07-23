@@ -10,7 +10,7 @@
 </head>
 <body class="page-pesquisadores">
   <header class="site-header">
-    <a href="index.html" class="brand"><img src="img/logos/ceamp-black.png" alt="CEAMP" class="brand-logo" /></a>
+    <a href="index.html" class="brand"><img src="img/logos/ceamp-black.png" alt="CEAMP" class="brand-logo" width="194" height="72" /></a>
     <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -86,10 +86,10 @@
     <div class="footer-inner">
       <div class="footer-logos">
         <a href="https://www.unicamp.br/" target="_blank" rel="noopener" aria-label="Unicamp">
-          <img src="img/logos/unicamp.png" alt="Unicamp" />
+          <img src="img/logos/unicamp.png" alt="Unicamp" width="85" height="96" loading="lazy" />
         </a>
         <a href="https://www.ifch.unicamp.br/" target="_blank" rel="noopener" aria-label="IFCH">
-          <img src="img/logos/ifch.png" alt="IFCH" />
+          <img src="img/logos/ifch.png" alt="IFCH" width="98" height="96" loading="lazy" />
         </a>
       </div>
       <div class="footer-contact">
@@ -278,7 +278,7 @@
     const renderPerson = (p) => `
       <article class="person" data-slug="${p.slug}" tabindex="0" role="button" aria-haspopup="dialog">
         <div class="person-photo">
-          <img src="img/pesquisadores/${p.slug}.jpg" alt="${escapeHtml(p.nome)}" onerror="this.style.display='none'" />
+          <img src="img/pesquisadores/${p.slug}.jpg" alt="${escapeHtml(p.nome)}" loading="lazy" onerror="this.style.display='none'" />
         </div>
         ${p.papel ? `<p class="person-role">${escapeHtml(p.papel)}</p>` : ''}
         <h3 class="person-name">${escapeHtml(p.nome)}</h3>

@@ -10,7 +10,7 @@
 </head>
 <body class="page-redes-parceiros">
   <header class="site-header">
-    <a href="index.html" class="brand"><img src="img/logos/ceamp-black.png" alt="CEAMP" class="brand-logo" /></a>
+    <a href="index.html" class="brand"><img src="img/logos/ceamp-black.png" alt="CEAMP" class="brand-logo" width="194" height="72" /></a>
     <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -74,10 +74,10 @@
     <div class="footer-inner">
       <div class="footer-logos">
         <a href="https://www.unicamp.br/" target="_blank" rel="noopener" aria-label="Unicamp">
-          <img src="img/logos/unicamp.png" alt="Unicamp" />
+          <img src="img/logos/unicamp.png" alt="Unicamp" width="85" height="96" loading="lazy" />
         </a>
         <a href="https://www.ifch.unicamp.br/" target="_blank" rel="noopener" aria-label="IFCH">
-          <img src="img/logos/ifch.png" alt="IFCH" />
+          <img src="img/logos/ifch.png" alt="IFCH" width="98" height="96" loading="lazy" />
         </a>
       </div>
       <div class="footer-contact">
@@ -152,7 +152,7 @@
     const renderRede = (r) => `
       <article class="network-card">
         <div class="network-logo">
-          <img src="img/redes/${r.slug}.jpg" alt="${r.nome}" onerror="this.style.display='none'" />
+          <img src="img/redes/${r.slug}.jpg" alt="${r.nome}" loading="lazy" onerror="this.style.display='none'" />
         </div>
         <div class="network-content">
           <h3 class="network-name">${r.nome}</h3>
