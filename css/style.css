@@ -497,10 +497,33 @@ p.lead { font-size: 19px; color: var(--ink); }
 }
 
 .person-no-photo {
+  position: relative;
+  overflow: hidden;
   cursor: default;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: var(--space-5) var(--space-4) var(--space-4);
+  transition: box-shadow var(--transition);
 }
 
-.person-no-photo:hover { transform: none; }
+.person-no-photo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--accent);
+}
+
+.person-no-photo:hover {
+  transform: none;
+  box-shadow: var(--shadow-sm);
+}
+
+.person-no-photo .person-name { margin-bottom: var(--space-1); }
+.person-no-photo .person-university { margin-bottom: var(--space-3); }
 
 .icon-external {
   flex: none;
