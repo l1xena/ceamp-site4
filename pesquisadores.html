@@ -73,6 +73,18 @@
         </div>
       </div>
 
+      <!-- INICIAÇÃO CIENTÍFICA -->
+      <div class="people-block">
+        <div class="people-header">
+          <h2>Pesquisadores · Iniciação Científica</h2>
+          <span class="count" id="iniciacao-count"></span>
+        </div>
+
+        <div class="people-grid" id="iniciacao-grid">
+          <!-- iniciação científica -->
+        </div>
+      </div>
+
       <!-- ASSOCIADOS -->
       <div class="people-block">
         <div class="people-header">
@@ -144,12 +156,11 @@
     // =====================================================================
     //
     //  1) Onde entra cada pessoa
-    //     - "coordenacao": coordenadores do CEAMP. Único grupo que usa o
-    //       campo "papel" (ex.: 'Coordenadora'), mostrado como legenda no
-    //       card e no pop-up.
+    //     - "coordenacao": coordenadores do CEAMP.
     //     - "pesquisadores": pesquisadores em atividade.
+    //     - "iniciacaoCientifica": pesquisadores de iniciação científica.
     //     - "associados": pesquisadores associados.
-    //     Cada pessoa é um objeto  { nome, slug, lattes, bio, apelidos? }.
+    //     Cada pessoa é um objeto  { nome, slug, lattes, bio, papel?, apelidos? }.
     //     Copie um objeto existente do grupo certo como modelo em vez de
     //     escrever um do zero — evita esquecer alguma chave.
     //
@@ -159,14 +170,19 @@
     //       Repositório (ver item 4). Sem "nome" a pessoa não renderiza.
     //     - slug: versão do nome em minúsculas, sem acento, com hífen no
     //       lugar de espaço (ex.: 'José Alves' -> 'jose-alves'). Precisa
-    //       ser ÚNICO em TODOS os três grupos — é usado como chave do
-    //       pop-up e como nome do arquivo da foto.
+    //       ser ÚNICO em TODOS os grupos — é usado como chave do pop-up e
+    //       como nome do arquivo da foto.
     //     - lattes: link completo do Currículo Lattes (com http:// ou
     //       https://). Sem link, use '' — o botão "Currículo Lattes" do
     //       pop-up some sozinho se o link não for http(s) válido.
     //     - bio: texto livre (formação/mini-bio) mostrado no pop-up.
     //       Comece vazio ('') e preencha quando quiser — sem bio, o
     //       pop-up mostra "Biografia em breve.".
+    //     - papel (opcional): legenda mostrada acima do nome no card e no
+    //       pop-up — cargo/título (ex.: em "associados", 'Professor · UFRRJ')
+    //       ou etapa de formação (ex.: em "pesquisadores", 'Mestrado',
+    //       'Doutorado', 'Pós-doutorado'). Sem papel, o card só mostra o
+    //       nome — não é obrigatório.
     //
     //  3) Foto
     //     Salve o arquivo em img/pesquisadores/<slug>.jpg (mesmo slug do
@@ -199,58 +215,72 @@
     //         pop-up dos dois.
     // =====================================================================
     const coordenacao = [
-      { nome: 'Ivia Minelli', slug: 'ivia-minelli', papel: 'Coordenadora', lattes: 'http://lattes.cnpq.br/2504619945377334', bio: '' },
-      { nome: 'José Alves de Freitas Neto', slug: 'jose-alves-de-freitas-neto', papel: 'Coordenador', lattes: 'http://lattes.cnpq.br/6583846020363516', bio: '' },
-      { nome: 'Luiz Estevam de Oliveira Fernandes', slug: 'luiz-estevam-de-oliveira-fernandes', papel: 'Coordenador', lattes: 'http://lattes.cnpq.br/2093509678163801', bio: '' },
+      { nome: 'Ivia Minelli', slug: 'ivia-minelli', lattes: 'http://lattes.cnpq.br/2504619945377334', bio: '' },
+      { nome: 'José Alves de Freitas Neto', slug: 'jose-alves-de-freitas-neto', lattes: 'http://lattes.cnpq.br/6583846020363516', bio: '' },
+      { nome: 'Luiz Estevam de Oliveira Fernandes', slug: 'luiz-estevam-de-oliveira-fernandes', lattes: 'http://lattes.cnpq.br/2093509678163801', bio: '' },
     ];
 
     const pesquisadores = [
-      { nome: 'Ana Carolina Balbino', slug: 'ana-carolina-balbino', lattes: 'http://lattes.cnpq.br/0913493261449773', bio: '' },
-      { nome: 'Catherine Hergert', slug: 'catherine-hergert', lattes: 'http://lattes.cnpq.br/3355448396720740', bio: '' },
-      { nome: 'Clara Garcia', slug: 'clara-garcia', lattes: 'http://lattes.cnpq.br/6935139006330862', bio: '' },
-      { nome: 'Daniel Vieira', slug: 'daniel-vieira', lattes: 'http://lattes.cnpq.br/3236078722858678', bio: '' },
-      { nome: 'Dara Ramos', slug: 'dara-ramos', lattes: 'http://lattes.cnpq.br/0381321331451630', bio: '' },
-      { nome: 'Fernanda Brenelli', slug: 'fernanda-brenelli', lattes: 'http://lattes.cnpq.br/9781424113655055', bio: '' },
-      { nome: 'Gustavo Padilha', slug: 'gustavo-padilha', lattes: 'http://lattes.cnpq.br/2903312465843460', bio: '' },
-      { nome: 'Laura Galassi', slug: 'laura-galassi', lattes: 'http://lattes.cnpq.br/5278288601454949', bio: '' },
-      { nome: 'Laura Marostegan', slug: 'laura-marostegan', lattes: 'http://lattes.cnpq.br/6220346816034254', bio: '' },
-      { nome: 'Lívia Mendes', slug: 'livia-mendes', lattes: 'http://lattes.cnpq.br/1296475213238854', bio: '' },
-      { nome: 'Lucas Bueno', slug: 'lucas-bueno', lattes: 'http://lattes.cnpq.br/4746828147155673', bio: '' },
-      { nome: 'Luiza Trevenzoli', slug: 'luiza-trevenzoli', lattes: 'http://lattes.cnpq.br/2176720285998705', bio: '' },
-      { nome: 'Maria Clara Figueiredo', slug: 'maria-clara-figueiredo', lattes: 'http://lattes.cnpq.br/9442622981315444', bio: '', apelidos: ['Maria Clara da Silveira'] },
-      { nome: 'Mariana Adami', slug: 'mariana-adami', lattes: 'http://lattes.cnpq.br/3383243816561582', bio: '' },
-      { nome: 'Mariza Cardoso', slug: 'mariza-cardoso', lattes: 'http://lattes.cnpq.br/7387499815589247', bio: '' },
-      { nome: 'Matheus Martins', slug: 'matheus-martins', lattes: 'http://lattes.cnpq.br/7281542833274446', bio: '' },
-      { nome: 'Raquel Lanzoni', slug: 'raquel-lanzoni', lattes: 'http://lattes.cnpq.br/6360193269646810', bio: '' },
+      { nome: 'Ana Carolina Balbino', slug: 'ana-carolina-balbino', papel: 'Pós-doutorado', lattes: 'http://lattes.cnpq.br/0913493261449773', bio: '' },
+      { nome: 'Catherine Hergert', slug: 'catherine-hergert', papel: 'Mestrado', lattes: 'http://lattes.cnpq.br/3355448396720740', bio: '' },
+      { nome: 'Clara Garcia', slug: 'clara-garcia', papel: 'Doutorado', lattes: 'http://lattes.cnpq.br/6935139006330862', bio: '' },
+      { nome: 'Daniel Vieira', slug: 'daniel-vieira', papel: 'Mestrado', lattes: 'http://lattes.cnpq.br/3236078722858678', bio: '' },
+      { nome: 'Dara Ramos', slug: 'dara-ramos', papel: 'Mestrado', lattes: 'http://lattes.cnpq.br/0381321331451630', bio: '' },
+      { nome: 'Fernanda Brenelli', slug: 'fernanda-brenelli', papel: 'Mestrado', lattes: 'http://lattes.cnpq.br/9781424113655055', bio: '' },
+      { nome: 'Gustavo Padilha', slug: 'gustavo-padilha', papel: 'Mestrado', lattes: 'http://lattes.cnpq.br/2903312465843460', bio: '' },
+      { nome: 'Laura Galassi', slug: 'laura-galassi', papel: 'Mestrado', lattes: 'http://lattes.cnpq.br/5278288601454949', bio: '' },
+      { nome: 'Laura Marostegan', slug: 'laura-marostegan', papel: 'Mestrado', lattes: 'http://lattes.cnpq.br/6220346816034254', bio: '' },
+      { nome: 'Lívia Mendes', slug: 'livia-mendes', papel: 'Doutorado', lattes: 'http://lattes.cnpq.br/1296475213238854', bio: '' },
+      { nome: 'Lucas Bueno', slug: 'lucas-bueno', papel: 'Mestrado', lattes: 'http://lattes.cnpq.br/4746828147155673', bio: '' },
+      { nome: 'Luiza Trevenzoli', slug: 'luiza-trevenzoli', papel: 'Mestrado', lattes: 'http://lattes.cnpq.br/2176720285998705', bio: '' },
+      { nome: 'Marcus Vinicius de Morais', slug: 'marcus-vinicius-de-morais', papel: 'Pós-doutorado', lattes: 'https://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4321720Z9', bio: '' },
+      { nome: 'Maria Clara Figueiredo', slug: 'maria-clara-figueiredo', papel: 'Doutorado', lattes: 'http://lattes.cnpq.br/9442622981315444', bio: '', apelidos: ['Maria Clara da Silveira'] },
+      { nome: 'Mariana Adami', slug: 'mariana-adami', papel: 'Doutorado', lattes: 'http://lattes.cnpq.br/3383243816561582', bio: '' },
+      { nome: 'Mariza Cardoso', slug: 'mariza-cardoso', papel: 'Mestrado', lattes: 'http://lattes.cnpq.br/7387499815589247', bio: '' },
+      { nome: 'Matheus Martins', slug: 'matheus-martins', papel: 'Doutorado', lattes: 'http://lattes.cnpq.br/7281542833274446', bio: '' },
+      { nome: 'Raquel Lanzoni', slug: 'raquel-lanzoni', papel: 'Doutorado', lattes: 'http://lattes.cnpq.br/6360193269646810', bio: '' },
+    ];
+
+    const iniciacaoCientifica = [
+      { nome: 'Ana Clarisse Silva Pereira', slug: 'ana-clarisse-silva-pereira', lattes: 'http://lattes.cnpq.br/9295067479195872', bio: '' },
+      { nome: 'Bruno Hermano Teixeira', slug: 'bruno-hermano-teixeira', lattes: 'http://lattes.cnpq.br/8703384470280442', bio: '' },
+      { nome: 'Carolina Caielli', slug: 'carolina-caielli', lattes: 'http://lattes.cnpq.br/6725559217336401', bio: '' },
+      { nome: 'Fernando Gonçalves dos Santos Filho', slug: 'fernando-goncalves-dos-santos-filho', lattes: 'http://lattes.cnpq.br/3305739434076376', bio: '' },
+      { nome: 'Hugo Vilamaior Taboga', slug: 'hugo-vilamaior-taboga', lattes: 'http://lattes.cnpq.br/7581472118790088', bio: '' },
+      { nome: 'Lívia Haibara', slug: 'livia-haibara', lattes: 'http://lattes.cnpq.br/6498172929202230', bio: '' },
+      { nome: 'Maria Beatriz Lombardi', slug: 'maria-beatriz-lombardi', lattes: 'http://lattes.cnpq.br/8032841855807988', bio: '' },
+      { nome: 'Monique Gomes Dominicheli', slug: 'monique-gomes-dominicheli', lattes: 'http://lattes.cnpq.br/0427729108577674', bio: '' },
+      { nome: 'Paula Helena Dias Afonso', slug: 'paula-helena-dias-afonso', lattes: 'http://lattes.cnpq.br/0646499307924953', bio: '' },
+      { nome: 'Vitor Hugo Finatti', slug: 'vitor-hugo-finatti', lattes: 'http://lattes.cnpq.br/1513790121737102', bio: '' },
     ];
 
     const associados = [
-      { nome: 'Anderson Roberti Reis', slug: 'anderson-roberti-reis', lattes: 'http://lattes.cnpq.br/3578387564218537', bio: 'Professor · UFMT', apelidos: ['Anderson dos Reis'] },
+      { nome: 'Anderson Roberti Reis', slug: 'anderson-roberti-reis', papel: 'Professor · UFMT', lattes: 'http://lattes.cnpq.br/3578387564218537', bio: 'Professor · UFMT', apelidos: ['Anderson dos Reis'] },
       { nome: 'André Mateus Pupin', slug: 'andre-mateus-pupin', lattes: 'http://lattes.cnpq.br/6484065053959712', bio: '', apelidos: ['André Pupin'] },
       { nome: 'Andresa Martins Rodrigues', slug: 'andresa-martins-rodrigues', lattes: 'http://lattes.cnpq.br/1603076830788317', bio: '' },
       { nome: 'Breno Juz', slug: 'breno-juz', lattes: 'http://lattes.cnpq.br/4302047061574128', bio: '' },
       { nome: 'Bruna Borges da Silva', slug: 'bruna-borges-da-silva', lattes: 'http://lattes.cnpq.br/2480008345945266', bio: '' },
       { nome: 'Bruno Passos Terlizzi', slug: 'bruno-passos-terlizzi', lattes: 'http://lattes.cnpq.br/6500743121091171', bio: '', apelidos: ['Bruno Terlizzi'] },
-      { nome: 'Caio Pedrosa da Silva', slug: 'caio-pedrosa-da-silva', lattes: 'http://lattes.cnpq.br/5949962502010701', bio: 'Professor · UEL' },
-      { nome: 'Carolina Amaral de Aguiar', slug: 'carolina-amaral-de-aguiar', lattes: 'http://lattes.cnpq.br/9978637833496783', bio: 'Professora · IRI - USP' },
+      { nome: 'Caio Pedrosa da Silva', slug: 'caio-pedrosa-da-silva', papel: 'Professor · UEL', lattes: 'http://lattes.cnpq.br/5949962502010701', bio: 'Professor · UEL' },
+      { nome: 'Carolina Amaral de Aguiar', slug: 'carolina-amaral-de-aguiar', papel: 'Professora · IRI - USP', lattes: 'http://lattes.cnpq.br/9978637833496783', bio: 'Professora · IRI - USP' },
       { nome: 'Danilo Destro Pádua', slug: 'danilo-destro-padua', lattes: 'http://lattes.cnpq.br/9127343659446577', bio: '' },
-      { nome: 'Eduardo Andres Mejia Toro', slug: 'eduardo-andres-mejia-toro', lattes: 'http://lattes.cnpq.br/9869443835203471', bio: 'Doutor em História' },
-      { nome: 'Fabio Feltrin', slug: 'fabio-feltrin', lattes: 'http://lattes.cnpq.br/3031724708203617', bio: 'Professor · UFPR' },
-      { nome: 'Felipe de Paula Góis Vieira', slug: 'felipe-de-paula-gois-vieira', lattes: 'http://lattes.cnpq.br/9927777419005902', bio: 'Professor · IFSP - Capivari', apelidos: ['Felipe Vieira'] },
-      { nome: 'Flávia Galli Tatsch', slug: 'flavia-galli-tatsch', lattes: 'http://lattes.cnpq.br/0478383494161646', bio: 'Professora · Unifesp' },
+      { nome: 'Eduardo Andres Mejia Toro', slug: 'eduardo-andres-mejia-toro', papel: 'Doutor em História', lattes: 'http://lattes.cnpq.br/9869443835203471', bio: 'Doutor em História' },
+      { nome: 'Fabio Feltrin', slug: 'fabio-feltrin', papel: 'Professor · UFPR', lattes: 'http://lattes.cnpq.br/3031724708203617', bio: 'Professor · UFPR' },
+      { nome: 'Felipe de Paula Góis Vieira', slug: 'felipe-de-paula-gois-vieira', papel: 'Professor · IFSP - Capivari', lattes: 'http://lattes.cnpq.br/9927777419005902', bio: 'Professor · IFSP - Capivari', apelidos: ['Felipe Vieira'] },
+      { nome: 'Flávia Galli Tatsch', slug: 'flavia-galli-tatsch', papel: 'Professora · Unifesp', lattes: 'http://lattes.cnpq.br/0478383494161646', bio: 'Professora · Unifesp' },
       { nome: 'Gabriel Sordi', slug: 'gabriel-sordi', lattes: 'http://lattes.cnpq.br/8840923919185834', bio: '' },
       { nome: 'Gabriela Theodoro', slug: 'gabriela-theodoro', lattes: 'http://lattes.cnpq.br/8379391706150049', bio: '' },
       { nome: 'José Ferreira', slug: 'jose-ferreira', lattes: 'http://lattes.cnpq.br/7678938529408028', bio: '' },
-      { nome: 'Julia Kumpera', slug: 'julia-kumpera', lattes: 'http://lattes.cnpq.br/0404856445929732', bio: 'Doutoranda · UFF', apelidos: ['Julia Aleksandra Martucci Kumpera'] },
+      { nome: 'Julia Kumpera', slug: 'julia-kumpera', papel: 'Doutoranda · UFF', lattes: 'http://lattes.cnpq.br/0404856445929732', bio: 'Doutoranda · UFF', apelidos: ['Julia Aleksandra Martucci Kumpera'] },
       { nome: 'Júlio Matzenbacher Zampietro', slug: 'julio-matzenbacher-zampietro', lattes: 'http://lattes.cnpq.br/1135002694128703', bio: '' },
-      { nome: 'Kleber Amancio', slug: 'kleber-amancio', lattes: 'http://lattes.cnpq.br/9694090488535381', bio: 'Professor · UFRB' },
-      { nome: 'Luís Guilherme Kalil', slug: 'luis-guilherme-kalil', lattes: 'http://lattes.cnpq.br/2638477460089622', bio: 'Professor · UFRRJ', apelidos: ['Luís Guilherme Assis Kalil'] },
-      { nome: 'Marcos Oliveira Amorim Tolentino', slug: 'marcos-oliveira-amorim-tolentino', lattes: 'http://lattes.cnpq.br/3852465852103525', bio: 'Pesquisador · Memorial da Resistência - SP', apelidos: ['Marcos Tolentino'] },
+      { nome: 'Kleber Amancio', slug: 'kleber-amancio', papel: 'Professor · UFRB', lattes: 'http://lattes.cnpq.br/9694090488535381', bio: 'Professor · UFRB' },
+      { nome: 'Luís Guilherme Kalil', slug: 'luis-guilherme-kalil', papel: 'Professor · UFRRJ', lattes: 'http://lattes.cnpq.br/2638477460089622', bio: 'Professor · UFRRJ', apelidos: ['Luís Guilherme Assis Kalil'] },
+      { nome: 'Marcos Oliveira Amorim Tolentino', slug: 'marcos-oliveira-amorim-tolentino', papel: 'Pesquisador · Memorial da Resistência - SP', lattes: 'http://lattes.cnpq.br/3852465852103525', bio: 'Pesquisador · Memorial da Resistência - SP', apelidos: ['Marcos Tolentino'] },
       { nome: 'Matias Emilio Almeida Garzon', slug: 'matias-emilio-almeida-garzon', lattes: 'http://lattes.cnpq.br/5954199322919552', bio: '' },
-      { nome: 'Monica Brincalepe Campo', slug: 'monica-brincalepe-campo', lattes: 'http://lattes.cnpq.br/0905245325390054', bio: 'Professora · UFU' },
-      { nome: 'Natália Ayo Schmiedecke', slug: 'natalia-ayo-schmiedecke', lattes: 'http://lattes.cnpq.br/0770326864184529', bio: 'Pesquisadora · Universidade de Hamburgo' },
-      { nome: 'Paulo Renato da Silva', slug: 'paulo-renato-da-silva', lattes: 'http://lattes.cnpq.br/8338759442804931', bio: 'Professor · UNILA' },
-      { nome: 'Pedro Henrique Salles da Nova Baruch', slug: 'pedro-henrique-salles-da-nova-baruch', lattes: 'http://lattes.cnpq.br/9742024691613440', bio: 'Graduando em História · Unicamp', apelidos: ['Pedro Baruch'] },
+      { nome: 'Monica Brincalepe Campo', slug: 'monica-brincalepe-campo', papel: 'Professora · UFU', lattes: 'http://lattes.cnpq.br/0905245325390054', bio: 'Professora · UFU' },
+      { nome: 'Natália Ayo Schmiedecke', slug: 'natalia-ayo-schmiedecke', papel: 'Pesquisadora · Universidade de Hamburgo', lattes: 'http://lattes.cnpq.br/0770326864184529', bio: 'Pesquisadora · Universidade de Hamburgo' },
+      { nome: 'Paulo Renato da Silva', slug: 'paulo-renato-da-silva', papel: 'Professor · UNILA', lattes: 'http://lattes.cnpq.br/8338759442804931', bio: 'Professor · UNILA' },
+      { nome: 'Pedro Henrique Salles da Nova Baruch', slug: 'pedro-henrique-salles-da-nova-baruch', papel: 'Graduando em História · Unicamp', lattes: 'http://lattes.cnpq.br/9742024691613440', bio: 'Graduando em História · Unicamp', apelidos: ['Pedro Baruch'] },
       { nome: 'Pedro Henrique Vilela Carvalho', slug: 'pedro-henrique-vilela-carvalho', lattes: 'http://lattes.cnpq.br/2963063403145543', bio: '' },
       { nome: 'Priscila Pereira', slug: 'priscila-pereira', lattes: '', bio: '' },
       { nome: 'Rafael Pavani', slug: 'rafael-pavani', lattes: 'http://lattes.cnpq.br/2428550824791654', bio: '' },
@@ -293,10 +323,12 @@
 
     document.getElementById('coordenacao-grid').innerHTML = coordenacao.map(renderPerson).join('');
     document.getElementById('pesquisadores-grid').innerHTML = pesquisadores.map(renderPerson).join('');
+    document.getElementById('iniciacao-grid').innerHTML = iniciacaoCientifica.map(renderPerson).join('');
     document.getElementById('associados-grid').innerHTML = associados.map(renderPerson).join('');
 
     document.getElementById('coordenacao-count').textContent = `${pad2(coordenacao.length)} pesquisadores`;
     document.getElementById('pesquisadores-count').textContent = `${pad2(pesquisadores.length)} pesquisadores`;
+    document.getElementById('iniciacao-count').textContent = `${pad2(iniciacaoCientifica.length)} pesquisadores`;
     document.getElementById('associados-count').textContent = `${pad2(associados.length)} pesquisadores`;
 
     // ---- Cruzamento com o Repositório (por nome do autor, aproximado) ----
@@ -322,7 +354,7 @@
 
     // ---- Pop-up ----
     const personBySlug = {};
-    [...coordenacao, ...pesquisadores, ...associados].forEach((p) => { personBySlug[p.slug] = p; });
+    [...coordenacao, ...pesquisadores, ...iniciacaoCientifica, ...associados].forEach((p) => { personBySlug[p.slug] = p; });
 
     const modal = document.getElementById('person-modal');
     const modalImg = document.getElementById('person-modal-img');
