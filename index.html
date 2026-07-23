@@ -11,7 +11,7 @@
 </head>
 <body class="home">
   <header class="site-header">
-    <a href="index.html" class="brand"><img src="img/logos/ceamp-black.png" alt="CEAMP" class="brand-logo" /></a>
+    <a href="index.html" class="brand"><img src="img/logos/ceamp-black.png" alt="CEAMP" class="brand-logo" width="194" height="72" /></a>
     <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -35,7 +35,7 @@
   <section class="hero">
     <picture>
       <source media="(orientation: portrait)" srcset="img/hero-mobile.jpg" />
-      <img src="img/hero-desktop.jpg" alt="Centro de Estudos Americanos · IFCH · Unicamp" />
+      <img src="img/hero-desktop.jpg" alt="Centro de Estudos Americanos · IFCH · Unicamp" width="2560" height="1440" />
     </picture>
   </section>
 
@@ -58,16 +58,8 @@
       <div class="home-sobre-divider" aria-hidden="true"></div>
 
       <div class="home-sobre-carousel">
-        <div class="home-carousel-frame">
-          <img src="img/carrossel-home/foto-1.jpg" alt="Pesquisadores do CEAMP reunidos" class="home-carousel-slide is-active" />
-          <img src="img/carrossel-home/foto-2.jpg" alt="Pesquisadores do CEAMP reunidos" class="home-carousel-slide" />
-          <img src="img/carrossel-home/foto-3.jpg" alt="Pesquisadores do CEAMP reunidos" class="home-carousel-slide" />
-        </div>
-        <div class="home-carousel-dots" aria-hidden="true">
-          <span class="home-carousel-dot is-active"></span>
-          <span class="home-carousel-dot"></span>
-          <span class="home-carousel-dot"></span>
-        </div>
+        <div class="home-carousel-frame" id="home-carousel-frame"></div>
+        <div class="home-carousel-dots" id="home-carousel-dots" aria-hidden="true"></div>
       </div>
     </div>
   </section>
@@ -107,10 +99,10 @@
     <div class="footer-inner">
       <div class="footer-logos">
         <a href="https://www.unicamp.br/" target="_blank" rel="noopener" aria-label="Unicamp">
-          <img src="img/logos/unicamp.png" alt="Unicamp" />
+          <img src="img/logos/unicamp.png" alt="Unicamp" width="85" height="96" loading="lazy" />
         </a>
         <a href="https://www.ifch.unicamp.br/" target="_blank" rel="noopener" aria-label="IFCH">
-          <img src="img/logos/ifch.png" alt="IFCH" />
+          <img src="img/logos/ifch.png" alt="IFCH" width="98" height="96" loading="lazy" />
         </a>
       </div>
       <div class="footer-contact">
@@ -129,20 +121,39 @@
 
   <script src="js/main.js"></script>
   <script>
-    // Carrossel de fotos do "Sobre": troca sozinho a cada poucos segundos
-    // (fade simples entre as imagens, sem setas/botões).
+    // Carrossel de fotos do "Sobre" — troca sozinho a cada poucos segundos
+    // (fade simples, sem setas/botões).
+    //
+    // Para adicionar uma foto nova: salve o arquivo em
+    // img/carrossel-home/ e acrescente o nome dele na lista abaixo (em
+    // qualquer posição). Para remover, tire o nome da lista. Só colocar
+    // o arquivo na pasta não é suficiente — precisa estar nesta lista.
     (() => {
-      const slides = document.querySelectorAll('.home-carousel-slide');
-      const dots = document.querySelectorAll('.home-carousel-dot');
-      if (slides.length < 2) return;
+      const fotos = ['foto-1.jpg', 'foto-2.jpg', 'foto-3.jpg'];
 
+      const frame = document.getElementById('home-carousel-frame');
+      const dotsEl = document.getElementById('home-carousel-dots');
+      if (!frame || !dotsEl || !fotos.length) return;
+
+      frame.innerHTML = fotos.map((f, i) => `
+        <img src="img/carrossel-home/${f}" alt="Pesquisadores do CEAMP reunidos"
+             class="home-carousel-slide${i === 0 ? ' is-active' : ''}" loading="lazy" />
+      `).join('');
+      dotsEl.innerHTML = fotos.map((_, i) =>
+        `<span class="home-carousel-dot${i === 0 ? ' is-active' : ''}"></span>`
+      ).join('');
+
+      if (fotos.length < 2) return;
+
+      const slides = frame.querySelectorAll('.home-carousel-slide');
+      const dots = dotsEl.querySelectorAll('.home-carousel-dot');
       let current = 0;
       setInterval(() => {
         slides[current].classList.remove('is-active');
-        dots[current]?.classList.remove('is-active');
+        dots[current].classList.remove('is-active');
         current = (current + 1) % slides.length;
         slides[current].classList.add('is-active');
-        dots[current]?.classList.add('is-active');
+        dots[current].classList.add('is-active');
       }, 4500);
     })();
   </script>
