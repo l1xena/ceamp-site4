@@ -127,7 +127,7 @@ body.home .hero img{
 }
 .home-section-label{
   font-size:13px;
-  letter-spacing:0.14em;
+  letter-spacing:0.08em;
   text-transform:uppercase;
   color:var(--accent-hover);
   font-weight:700;
