@@ -238,17 +238,22 @@ body.home .footer-logos img{ height:48px; }
 @media (max-width: 720px) {
   body.home .hero img { object-fit: cover; transform: none; }
 }
-/* ---- Cartões de atalho na home (aparecem só no celular) ---- */
+/* ---- Cartões de atalho na home (aparecem no celular e em telas
+   intermediárias, tipo tablet) ---- */
 .home-cards { display: none; }
 
-@media (max-width: 720px) {
-  /* a home passa a rolar no celular pra caber os cartões */
+@media (max-width: 1024px) {
+  /* a home passa a rolar nesse tamanho de tela pra caber os cartões */
   body.home { height: auto; overflow: visible; display: block; }
   body.home .site-header { position: sticky; top: 0; z-index: 100; }
   body.home .hero { height: 58svh; }
 
-  /* No celular ficam só os cartões de atalho de sempre — as seções
-     novas de "Sobre" e "Repositório recente" são só para desktop. */
+  /* Abaixo de 1024px ficam só os cartões de atalho de sempre — as
+     seções novas de "Sobre" e "Repositório recente" só cabem
+     confortavelmente a partir daí (o carrossel tem largura fixa de
+     480px e, antes disso, espremia demais o texto ao lado, quebrando
+     linha cedo demais e deixando o espaço até o traço divisor com
+     cara de maior que o espaço até a foto). */
   .home-sobre,
   .home-repositorio-recente { display: none; }
 
