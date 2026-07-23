@@ -1084,6 +1084,19 @@ body.modal-open { overflow: hidden; }
     gap: var(--space-6);
   }
 
+  /* As fotos são retrato (mais altas que largas); o box 4/3 do desktop
+     cortava boa parte de cima/baixo. Nessa largura, troca pra um box
+     retrato (perto da proporção real das fotos) e diminui o tamanho,
+     centralizando cada uma. */
+  .historia-images figure {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .historia-images img {
+    aspect-ratio: 3 / 4;
+  }
+
   .people-grid { grid-template-columns: repeat(2, 1fr); }
   .people-grid.coord { grid-template-columns: repeat(2, 1fr); }
 }
