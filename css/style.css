@@ -329,15 +329,24 @@ p.lead { font-size: 19px; color: var(--ink); }
 
 /* ---------- História (page 2) ---------- */
 .historia-grid {
-  max-width: 680px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* Contém as fotos flutuantes (ver .historia-inline-photo abaixo) —
+   sem isso o float "vaza" pra fora da coluna de texto. */
+.historia-text {
+  display: flow-root;
 }
 
 .historia-text p { font-size: 17px; }
 
 /* Fotos intercaladas no texto — uma depois do 2º parágrafo, outra
-   depois do último (ver marcação no historia.html). Retrato (3:4),
-   menores, pra não competir com o texto — mesmo esquema no celular e
-   no desktop. */
+   depois do último (ver marcação no historia.html). Retrato (3:4).
+   No celular ficam centralizadas, em bloco, entre os parágrafos. A
+   partir de telas médias (ver responsivo) flutuam à direita e o
+   texto contorna, estilo revista — evita a coluna estreita sobrando
+   com espaço em branco do lado numa tela larga. */
 .historia-inline-photo {
   max-width: 320px;
   margin: var(--space-6) auto;
@@ -360,6 +369,15 @@ p.lead { font-size: 19px; color: var(--ink); }
   margin-top: var(--space-2);
   letter-spacing: 0.02em;
   text-align: center;
+}
+
+@media (min-width: 640px) {
+  .historia-inline-photo {
+    float: right;
+    clear: right;
+    max-width: 300px;
+    margin: 4px 0 20px var(--space-6);
+  }
 }
 
 .timeline {
