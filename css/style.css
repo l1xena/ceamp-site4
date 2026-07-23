@@ -330,21 +330,24 @@ p.lead { font-size: 19px; color: var(--ink); }
 /* ---------- História (page 2) ---------- */
 .historia-grid {
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
+  grid-template-columns: 1fr auto;
   gap: var(--space-8);
   align-items: start;
 }
 
 .historia-text p { font-size: 17px; }
 
-/* Coluna de fotos ao lado do texto (desktop). Retrato (3:4) — a foto
-   original é retrato, então esse box evita o corte pesado que um box
-   4/3 (paisagem) dava. */
+/* Coluna de fotos ao lado do texto (desktop) — menores, formato
+   paisagem (4:3). As fotos originais são retrato; com object-fit
+   "contain" (em vez de "cover") a foto inteira aparece dentro do box,
+   sem cortar ninguém — sobra uma faixa do fundo suave (--bg-soft) nas
+   laterais em vez de cortar as pessoas. */
 .historia-images {
   display: grid;
   grid-template-columns: 1fr;
   gap: var(--space-4);
   align-content: start;
+  width: 240px;
 }
 
 .historia-images figure {
@@ -353,8 +356,8 @@ p.lead { font-size: 19px; color: var(--ink); }
 
 .historia-images img {
   width: 100%;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
   background: var(--bg-soft);
   border-radius: var(--radius-md);
   transition: transform var(--transition-slow);
@@ -1101,14 +1104,14 @@ body.modal-open { overflow: hidden; }
 
   .historia-inline-photo {
     display: block;
-    max-width: 320px;
+    max-width: 240px;
     margin: var(--space-6) auto;
   }
 
   .historia-inline-photo img {
     width: 100%;
-    aspect-ratio: 3 / 4;
-    object-fit: cover;
+    aspect-ratio: 4 / 3;
+    object-fit: contain;
     background: var(--bg-soft);
     border-radius: var(--radius-md);
   }
