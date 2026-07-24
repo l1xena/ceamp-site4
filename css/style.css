@@ -1122,6 +1122,8 @@ body.modal-open { overflow: hidden; }
     text-align: center;
   }
 
+  .timeline { margin-top: var(--space-7); }
+
   .people-grid { grid-template-columns: repeat(2, 1fr); }
   .people-grid.coord { grid-template-columns: repeat(2, 1fr); }
 }
