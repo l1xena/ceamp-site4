@@ -28,6 +28,7 @@
           <div class="nav-dropdown-inner">
             <a href="pesquisadores.html" class="active">Pesquisadores</a>
             <a href="redes-parceiros.html">Redes e Parceiros</a>
+            <a href="projetos-atuais.html">Projetos Atuais</a>
           </div>
         </div>
       </div>
@@ -53,7 +54,10 @@
       <div class="people-block">
         <div class="people-header">
           <h2>Coordenação</h2>
-          <span class="count" id="coordenacao-count"></span>
+          <div class="people-header-right">
+            <span class="count" id="coordenacao-count"></span>
+            <a href="projetos-atuais.html" class="btn-small">Ver projetos atuais →</a>
+          </div>
         </div>
 
         <div class="people-grid coord" id="coordenacao-grid">
@@ -141,6 +145,10 @@
           <svg class="icon-external" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
         </a>
         <div class="person-modal-bio" id="person-modal-bio"></div>
+        <div class="person-modal-project" id="person-modal-project" hidden>
+          <p class="person-modal-project-title">Projeto atual</p>
+          <a class="person-modal-project-link" id="person-modal-project-link" href="#"></a>
+        </div>
         <div class="person-modal-works" id="person-modal-works">
           <p class="person-modal-works-title">Trabalhos no repositório</p>
           <ul class="person-modal-works-list" id="person-modal-works-list"></ul>
@@ -342,6 +350,15 @@
       .then((data) => { trabalhos = Array.isArray(data) ? data : []; })
       .catch(() => { trabalhos = []; });
 
+    // ---- Projeto atual de cada coordenador (data/projetos.json) ----
+    let projetos = [];
+    fetch('data/projetos.json')
+      .then((r) => (r.ok ? r.json() : []))
+      .then((data) => { projetos = Array.isArray(data) ? data : []; })
+      .catch(() => { projetos = []; });
+
+    const projetoFor = (p) => projetos.find((proj) => proj.slug === p.slug);
+
     // "apelidos" (opcional): outras formas do nome do autor no Repositório,
     // pra quando não bate por aproximação (ex.: sobrenome de casamento).
     const worksFor = (p) => {
@@ -363,6 +380,8 @@
     const modalName = document.getElementById('person-modal-name');
     const modalLattes = document.getElementById('person-modal-lattes');
     const modalBio = document.getElementById('person-modal-bio');
+    const modalProject = document.getElementById('person-modal-project');
+    const modalProjectLink = document.getElementById('person-modal-project-link');
     const modalWorks = document.getElementById('person-modal-works');
     const modalWorksList = document.getElementById('person-modal-works-list');
     let lastFocused = null;
@@ -380,6 +399,15 @@
       modalLattes.href = p.lattes || '#';
       modalLattes.style.display = isSafeUrl(p.lattes) ? '' : 'none';
       modalBio.textContent = p.bio && p.bio.trim() ? p.bio : 'Biografia em breve.';
+
+      const projeto = projetoFor(p);
+      if (projeto && projeto.titulo) {
+        modalProjectLink.textContent = projeto.titulo;
+        modalProjectLink.href = `projetos-atuais.html#${encodeURIComponent(projeto.slug)}`;
+        modalProject.hidden = false;
+      } else {
+        modalProject.hidden = true;
+      }
 
       const works = worksFor(p);
       if (works.length) {

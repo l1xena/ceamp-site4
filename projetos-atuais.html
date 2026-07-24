@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Projetos de pesquisa atuais dos coordenadores do Centro de Estudos Americanos da Unicamp (CEAMP)." />
+  <title>Projetos Atuais · CEAMP</title>
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/theme.css" />
+</head>
+<body class="page-projetos-atuais">
+  <header class="site-header">
+    <a href="index.html" class="brand"><img src="img/logos/ceamp-black.png" alt="CEAMP" class="brand-logo" width="194" height="72" /></a>
+    <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav">
+      <a href="index.html">Início</a>
+      <a href="historia.html">Nossa história</a>
+      <div class="nav-item">
+        <a href="pesquisadores.html" class="active">Pesquisadores</a>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-inner">
+            <a href="pesquisadores.html">Pesquisadores</a>
+            <a href="redes-parceiros.html">Redes e Parceiros</a>
+            <a href="projetos-atuais.html" class="active">Projetos Atuais</a>
+          </div>
+        </div>
+      </div>
+      <a href="repositorio.html">Repositório</a>
+      <a href="contato.html">Contato</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="page-hero-inner">
+        <p class="eyebrow">02 · Projetos Atuais</p>
+        <h1>Projetos atuais dos coordenadores</h1>
+        <p class="subtitle">
+          Pesquisas em andamento conduzidas pela coordenação do CEAMP.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="projects-list" id="projects-list">
+        <!-- projetos -->
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-logos">
+        <a href="https://www.unicamp.br/" target="_blank" rel="noopener" aria-label="Unicamp">
+          <img src="img/logos/unicamp.png" alt="Unicamp" width="85" height="96" loading="lazy" />
+        </a>
+        <a href="https://www.ifch.unicamp.br/" target="_blank" rel="noopener" aria-label="IFCH">
+          <img src="img/logos/ifch.png" alt="IFCH" width="98" height="96" loading="lazy" />
+        </a>
+      </div>
+      <div class="footer-contact">
+        <a href="mailto:ceamp@unicamp.br">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+          ceamp@unicamp.br
+        </a>
+        <address>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-7.58 7-12a7 7 0 1 0-14 0c0 4.42 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          IFCH · Unicamp — Campinas, SP
+        </address>
+      </div>
+      <span class="footer-copyright">Todos os direitos reservados · <span id="year"></span></span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // =====================================================================
+    //  PROJETOS ATUAIS — um projeto de pesquisa por coordenador do CEAMP.
+    //  Os dados vêm de data/projetos.json. Cada projeto é um objeto:
+    //    { slug, periodo, titulo, descricao, financiador, placeholder? }
+    //  - slug: precisa ser IGUAL ao slug do coordenador em pesquisadores.html
+    //    — é o que faz o pop-up do pesquisador linkar pro projeto certo
+    //    (âncora #slug nesta página) e o card daqui mostrar o nome certo.
+    //  - descricao: pode ter parágrafos separados por uma linha em branco
+    //    (\n\n) — a formatação é preservada na tela.
+    //  - placeholder (opcional): true enquanto o projeto ainda não tem
+    //    conteúdo definitivo (mostra o card com borda tracejada).
+    // =====================================================================
+    const coordenadores = {
+      'jose-alves-de-freitas-neto': 'José Alves de Freitas Neto',
+      'luiz-estevam-de-oliveira-fernandes': 'Luiz Estevam de Oliveira Fernandes',
+      'ivia-minelli': 'Ivia Minelli',
+    };
+
+    const escapeHtml = (str) => (str ?? '').toString()
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+
+    const renderProjeto = (proj) => `
+      <article class="project-card${proj.placeholder ? ' is-placeholder' : ''}" id="${escapeHtml(proj.slug)}">
+        <div class="project-card-header">
+          <span class="project-coordenador">${escapeHtml(coordenadores[proj.slug] || '')}</span>
+          ${proj.periodo ? `<span class="project-periodo">${escapeHtml(proj.periodo)}</span>` : ''}
+        </div>
+        <h3 class="project-title">${escapeHtml(proj.titulo)}</h3>
+        <p class="project-description">${escapeHtml(proj.descricao)}</p>
+        ${proj.financiador ? `<p class="project-funder"><strong>Financiador(es):</strong> ${escapeHtml(proj.financiador)}</p>` : ''}
+      </article>
+    `;
+
+    fetch('data/projetos.json')
+      .then((r) => (r.ok ? r.json() : []))
+      .then((data) => {
+        const projetos = Array.isArray(data) ? data : [];
+        document.getElementById('projects-list').innerHTML = projetos.map(renderProjeto).join('');
+
+        if (location.hash) {
+          const target = document.querySelector(location.hash);
+          if (target) target.scrollIntoView({ block: 'start' });
+        }
+      })
+      .catch(() => {
+        document.getElementById('projects-list').innerHTML = '<p>Não foi possível carregar os projetos no momento.</p>';
+      });
+  </script>
+</body>
+</html>
