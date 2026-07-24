@@ -74,6 +74,10 @@
         </div>
 
         <form class="contact-form" id="contact-form" novalidate>
+          <input type="hidden" name="access_key" value="024f34e5-c627-4da7-a77c-832c1a4a8b68" />
+          <input type="hidden" name="subject" value="[CEAMP] Nova mensagem pelo site" />
+          <input type="hidden" name="from_name" value="Site CEAMP" />
+          <input type="checkbox" name="botcheck" class="hidden-field" style="display:none" tabindex="-1" autocomplete="off" />
           <div class="field">
             <label for="nome">Nome</label>
             <input type="text" id="nome" name="nome" required autocomplete="name" />
@@ -123,15 +127,12 @@
 
   <script src="js/main.js"></script>
   <script>
-    // Sem backend: o form monta um mailto: com os dados preenchidos.
-    // Para receber via HTTP direto, troque por um serviço como Formspree,
-    // Getform ou Web3Forms (basta colocar a URL no `action` do form).
-    const EMAIL_DESTINO = 'ceamp@unicamp.br';
-
+    // Envio direto via Web3Forms (sem abrir cliente de email).
     const form = document.getElementById('contact-form');
     const status = document.getElementById('form-status');
+    const submitBtn = form.querySelector('button[type="submit"]');
 
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const data = new FormData(form);
       const nome = data.get('nome')?.toString().trim();
@@ -145,19 +146,33 @@
         return;
       }
 
-      const body =
-        `Nome: ${nome}\n` +
-        `Email: ${email}\n\n` +
-        `${mensagem}`;
+      data.set('subject', '[CEAMP] ' + assunto);
+      submitBtn.disabled = true;
+      status.textContent = 'Enviando…';
+      status.className = 'form-status';
 
-      const href =
-        `mailto:${EMAIL_DESTINO}` +
-        `?subject=${encodeURIComponent('[CEAMP] ' + assunto)}` +
-        `&body=${encodeURIComponent(body)}`;
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: data,
+        });
+        const result = await response.json();
 
-      window.location.href = href;
-      status.textContent = 'Abrindo seu cliente de email…';
-      status.className = 'form-status success';
+        if (result.success) {
+          status.textContent = 'Mensagem enviada com sucesso!';
+          status.className = 'form-status success';
+          form.reset();
+        } else {
+          status.textContent = 'Não foi possível enviar. Tente novamente ou use o email direto.';
+          status.className = 'form-status error';
+        }
+      } catch (err) {
+        status.textContent = 'Erro de conexão. Tente novamente ou use o email direto.';
+        status.className = 'form-status error';
+      } finally {
+        submitBtn.disabled = false;
+      }
     });
   </script>
 </body>
